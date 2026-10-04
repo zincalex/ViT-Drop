@@ -1,0 +1,31 @@
+{
+  "model_name": "deit_drop5_layer_drop_mlp",
+  "model_path": "./deit_model_speed",
+  "gpu": "NVIDIA A40",
+  "image_size": 224,
+  "flops_g": 26.133086208,
+  "baseline_file": "./results/speed/per_model/deit_original_speed.csv",
+  "baseline_flops_g": 35.428712448,
+  "idle_power_w": 79.52333333333334,
+  "num_runs": 5,
+  "num_iterations": 100,
+  "timestamp": "2026-09-12T09:41:57",
+  "results": [
+    {
+      "Batch Size": 128,
+      "Latency (ms)": 51.14615345001221,
+      "Latency Std (ms)": 0.09553140726245092,
+      "Throughput (imgs/s)": 2502.6407346645506,
+      "Throughput Std (imgs/s)": 4.679572662435306,
+      "Memory (GB)": 0.671931266784668,
+      "Memory (%)": 1.5126342577198617,
+      "Power (W)": 294.9179464285714,
+      "Net Power (W)": 215.39461309523804,
+      "Energy/Image (J)": 0.08606693326443804,
+      "FLOPs (G)": 26.133086208,
+      "Speedup": 1.2953871118796803,
+      "FLOPs Remained (%)": 73.76244972592914,
+      "Conversion Efficiency": 0.9555092671564147
+    }
+  ]
+}

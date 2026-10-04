@@ -1,0 +1,16 @@
+
+                RESULTS
+                Model: ./dinov2_model
+                Dataset: Bark
+                Dataset classes: 23
+                Model classes: 1000
+                Head fine-tuning: YES
+                Pruning method: layer_drop_mlp
+                Layers dropped: 40
+                Total samples: 4940
+                Accuracy: 0.6660 (66.60%)
+                Precision: 0.6223
+                Recall: 0.6221
+                F1 Score: 0.5863
+                ================================================================================
+                

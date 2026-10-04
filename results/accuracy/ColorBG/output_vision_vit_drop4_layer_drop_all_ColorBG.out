@@ -1,0 +1,16 @@
+
+                RESULTS
+                Model: ./vit_model
+                Dataset: ColorBG
+                Dataset classes: 3
+                Model classes: 1000
+                Head fine-tuning: YES
+                Pruning method: layer_drop_all
+                Layers dropped: 4
+                Total samples: 60
+                Accuracy: 0.8333 (83.33%)
+                Precision: 0.8248
+                Recall: 0.8406
+                F1 Score: 0.8280
+                ================================================================================
+                

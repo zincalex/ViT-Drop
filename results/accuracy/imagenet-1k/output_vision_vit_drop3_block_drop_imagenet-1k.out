@@ -1,0 +1,16 @@
+
+                RESULTS
+                Model: ./vit_model_imnet
+                Dataset: imagenet-1k-orig
+                Dataset classes: 1000
+                Model classes: 1000
+                Head fine-tuning: SKIPPED
+                Pruning method: block_drop
+                Layers dropped: 3
+                Total samples: 50000
+                Accuracy: 0.3694 (36.94%)
+                Precision: 0.5135
+                Recall: 0.3694
+                F1 Score: 0.3802
+                ================================================================================
+                

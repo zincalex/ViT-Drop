@@ -1,0 +1,16 @@
+
+                RESULTS
+                Model: ./dinov2_model
+                Dataset: ColorBG
+                Dataset classes: 3
+                Model classes: 1000
+                Head fine-tuning: YES
+                Pruning method: block_drop
+                Layers dropped: 32
+                Total samples: 60
+                Accuracy: 0.7833 (78.33%)
+                Precision: 0.7396
+                Recall: 0.7429
+                F1 Score: 0.7365
+                ================================================================================
+                

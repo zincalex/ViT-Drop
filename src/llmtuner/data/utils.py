@@ -24,6 +24,10 @@ class Role(str, Enum):
     OBSERVATION = "observation"
 
 
+def is_vision_dataset(dataset_name: str) -> bool:
+    return any(keyword in dataset_name.lower() for keyword in ['imagenet', 'cifar', 'zoolake'])
+
+
 def checksum(data_files: List[str], file_sha1: Optional[str] = None) -> None:
     if file_sha1 is None:
         logger.warning("Checksum failed: missing SHA-1 hash value in dataset_info.json.")

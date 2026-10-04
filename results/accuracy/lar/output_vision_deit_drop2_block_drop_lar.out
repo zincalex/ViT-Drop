@@ -1,0 +1,16 @@
+
+                RESULTS
+                Model: ./deit_model
+                Dataset: lar
+                Dataset classes: 4
+                Model classes: 1000
+                Head fine-tuning: YES
+                Pruning method: block_drop
+                Layers dropped: 2
+                Total samples: 280
+                Accuracy: 0.9143 (91.43%)
+                Precision: 0.9230
+                Recall: 0.9150
+                F1 Score: 0.9163
+                ================================================================================
+                

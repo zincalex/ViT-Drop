@@ -1,32 +1,37 @@
-#!/usr/bin/env bash
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-ROOT_DIR="$(cd "${SCRIPT_DIR}/../.." && pwd)"
+#!/usr/bin/bash
 
 port="21804"
-GPUs="0,1,2,3,4,5,6,7"
+GPUs="0,1,2,3"
 
-# Taking mistralai/Mistral-7B-v0.1 as an example.
-model_names=("mistral") # The model to be compressed.
-drop_modules=("mlp" "attn" "block") # The modules to be dropped.
-drop_nums=("4" "8") # The number of dropped modules.
+model_names=("llama2-13b" "mistral") 
+drop_nums=("4" "8") 
+prune_methods=("block_drop" "layer_drop_attn" "layer_drop_mlp" "layer_drop_all")
 
 tasks=("boolq" "rte" "openbookqa" "piqa" "mmlu" "winogrande" "gsm8k" "hellaswag" "arc_challenge")
 num_fewshots=("0" "0" "0" "0" "5" "5" "5" "10" "25")
+
+# Place Your Huggingface Token below and uncomment
+#export HUGGINGFACE_TOKEN=
 
 for model_name in "${model_names[@]}"
 do
     # Download the model to a local directory. 
     git lfs install
-    git clone https://huggingface.co/mistralai/Mistral-7B-v0.1
-    mv Mistral-7B-v0.1 ./"$model_name"_model
+    if [ "$model_name" == "mistral" ]; then
+        git clone https://huggingface.co/mistralai/Mistral-7B-v0.1
+        mv Mistral-7B-v0.1 ./"$model_name"_model
+    elif [ "$model_name" == "llama2-13b" ]; then
+        git clone https://user:$HUGGINGFACE_TOKEN@huggingface.co/meta-llama/Llama-2-13b-hf
+        mv Llama-2-13b-hf ./"$model_name"_model
+    fi
 
-    for drop_module in "${drop_modules[@]}"
+    for prune_method in "${prune_methods[@]}"
     do
         for drop_num in "${drop_nums[@]}"
         do
-            cfg_path="${ROOT_DIR}/$model_name"_drop"$drop_num"_"$drop_module"/config.json # PATH to the corresponding config.json file.
-            cp -f "$cfg_path" ./"$model_name"_model/config.json # Replace the original config.json file.
-            cp "${ROOT_DIR}"/"$model_name"_drop"$drop_num"_"$drop_module"/*.py ./"$model_name"_model/ # Build the configuration and modeling files for remote code.
+            cfg_path=./results_prune/"$model_name"-"$prune_method"-discrete-drop"$drop_num"/checkpoint/config.json 
+            cp -f "$cfg_path" ./"$model_name"_model/config.json 
+            cp ./results_prune/"$model_name"-"$prune_method"-discrete-drop"$drop_num"/checkpoint/*.py ./"$model_name"_model/ 
             echo "Eval the config of:"
             echo $cfg_path
 
@@ -38,7 +43,7 @@ do
                     --tasks ${tasks[$i]} \
                     --num_fewshot ${num_fewshots[$i]} \
                     --batch_size 1 \
-                    --output_path ./${num_fewshots[$i]}shot_${tasks[$i]}_"$model_name"_drop"$drop_num"_"$drop_module".json >> output_"$model_name"_drop"$drop_num"_"$drop_module".out
+                    --output_path ./${num_fewshots[$i]}shot_${tasks[$i]}_"$model_name"_drop"$drop_num"_"$prune_method".json >> output_"$model_name"_drop"$drop_num"_"$prune_method".out
             done
         done
     done

@@ -1,0 +1,6 @@
+dataset,dinov2_acc,dinov2_method,dinov2_drop,dinov3_vit_acc,dinov3_vit_method,dinov3_vit_drop,swinv2_acc,swinv2_method,swinv2_drop,vit_acc,vit_method,vit_drop
+ColorBG,91.67,baseline,0,90.00,baseline,0,95.00,baseline,0,95.00,baseline,0
+InfLarynge,91.67,baseline,0,93.33,baseline,0,95.83,baseline,0,95.42,baseline,0
+lar,98.48,baseline,0,97.35,baseline,0,95.83,baseline,0,91.29,baseline,0
+Pest,98.90,baseline,0,97.51,baseline,0,87.85,baseline,0,95.86,baseline,0
+zoolake,95.77,baseline,0,95.62,baseline,0,93.57,baseline,0,93.31,baseline,0

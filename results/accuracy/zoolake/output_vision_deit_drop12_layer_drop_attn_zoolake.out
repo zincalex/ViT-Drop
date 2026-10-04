@@ -1,0 +1,16 @@
+
+                RESULTS
+                Model: ./deit_model
+                Dataset: zoolake
+                Dataset classes: 35
+                Model classes: 1000
+                Head fine-tuning: YES
+                Pruning method: layer_drop_attn
+                Layers dropped: 12
+                Total samples: 2700
+                Accuracy: 0.1652 (16.52%)
+                Precision: 0.0047
+                Recall: 0.0286
+                F1 Score: 0.0081
+                ================================================================================
+                

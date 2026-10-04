@@ -1,0 +1,16 @@
+
+                RESULTS
+                Model: ./dinov3_vit_model
+                Dataset: CrossD
+                Dataset classes: 44
+                Model classes: 44
+                Head fine-tuning: YES
+                Pruning method: layer_drop_attn
+                Layers dropped: 20
+                Total samples: 68100
+                Accuracy: 0.0853 (8.53%)
+                Precision: 0.0243
+                Recall: 0.0218
+                F1 Score: 0.0092
+                ================================================================================
+                

@@ -1,0 +1,16 @@
+
+                RESULTS
+                Model: ./dinov3_vit_model
+                Dataset: zoolake
+                Dataset classes: 35
+                Model classes: 35
+                Head fine-tuning: YES
+                Pruning method: layer_drop_mlp
+                Layers dropped: 16
+                Total samples: 2700
+                Accuracy: 0.2848 (28.48%)
+                Precision: 0.1176
+                Recall: 0.0865
+                F1 Score: 0.0642
+                ================================================================================
+                

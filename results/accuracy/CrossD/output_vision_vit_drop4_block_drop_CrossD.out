@@ -1,0 +1,16 @@
+
+                RESULTS
+                Model: ./vit_model
+                Dataset: CrossD
+                Dataset classes: 44
+                Model classes: 1000
+                Head fine-tuning: YES
+                Pruning method: block_drop
+                Layers dropped: 4
+                Total samples: 68100
+                Accuracy: 0.2104 (21.04%)
+                Precision: 0.3366
+                Recall: 0.2316
+                F1 Score: 0.1701
+                ================================================================================
+                

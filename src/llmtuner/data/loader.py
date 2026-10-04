@@ -10,7 +10,7 @@ from .aligner import align_dataset
 from .parser import get_dataset_list
 from .preprocess import get_preprocess_and_print_func
 from .template import get_template_and_fix_tokenizer
-from .utils import checksum
+from .utils import checksum, is_vision_dataset
 
 
 if TYPE_CHECKING:
@@ -108,7 +108,7 @@ def load_single_dataset(
         num_samples = min(data_args.max_samples, len(dataset))
         dataset = dataset.select(range(num_samples))
 
-    return align_dataset(dataset, dataset_attr, data_args)
+    return align_dataset(dataset, dataset_attr, data_args) if not is_vision_dataset(dataset_attr.dataset_name) else dataset
 
 
 def merge_dataset(
@@ -143,9 +143,13 @@ def get_dataset(
     stage: Literal["pt", "sft", "rm", "ppo"],
     # split: Optional[str] = "compression", # TODO: add split
 ) -> Union["Dataset", "IterableDataset"]:
-    template = get_template_and_fix_tokenizer(tokenizer, data_args.template)
-    if data_args.train_on_prompt and template.efficient_eos:
-        raise ValueError("Current template does not support `train_on_prompt`.")
+    is_vision = is_vision_dataset(data_args.dataset)
+    if not is_vision:
+        template = get_template_and_fix_tokenizer(tokenizer, data_args.template)
+        if data_args.train_on_prompt and template.efficient_eos:
+            raise ValueError("Current template does not support `train_on_prompt`.")
+    else:
+        template = None  # Vision models don't use templates
 
     # Load from cache
     if data_args.cache_path is not None:
@@ -164,7 +168,7 @@ def get_dataset(
 
     with training_args.main_process_first(desc="pre-process dataset"):
         preprocess_func, print_function = get_preprocess_and_print_func(
-            tokenizer, template, data_args, training_args, stage
+            tokenizer, template, data_args, training_args, stage, is_vision=is_vision
         )
         column_names = list(next(iter(dataset)).keys())
         kwargs = {}

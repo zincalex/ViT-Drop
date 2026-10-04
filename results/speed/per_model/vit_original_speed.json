@@ -1,0 +1,28 @@
+{
+  "model_name": "vit_original",
+  "model_path": "./vit_model_original",
+  "gpu": "NVIDIA A40",
+  "image_size": 224,
+  "flops_g": 35.428712448,
+  "baseline_file": null,
+  "baseline_flops_g": null,
+  "idle_power_w": 70.44888888888889,
+  "num_runs": 5,
+  "num_iterations": 100,
+  "timestamp": "2026-10-03T23:48:19",
+  "results": [
+    {
+      "Batch Size": 128,
+      "Latency (ms)": 66.91445541381836,
+      "Latency Std (ms)": 0.15855781721547918,
+      "Throughput (imgs/s)": 1912.900858134964,
+      "Throughput Std (imgs/s)": 4.535778687891678,
+      "Memory (GB)": 0.7179141044616699,
+      "Memory (%)": 1.6160563705622115,
+      "Power (W)": 296.82992700729926,
+      "Net Power (W)": 226.38103811841037,
+      "Energy/Image (J)": 0.11834436539441301,
+      "FLOPs (G)": 35.428712448
+    }
+  ]
+}

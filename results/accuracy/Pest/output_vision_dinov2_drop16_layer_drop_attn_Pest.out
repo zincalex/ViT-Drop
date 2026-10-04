@@ -1,0 +1,16 @@
+
+                RESULTS
+                Model: ./dinov2_model
+                Dataset: Pest
+                Dataset classes: 10
+                Model classes: 1000
+                Head fine-tuning: YES
+                Pruning method: layer_drop_attn
+                Layers dropped: 16
+                Total samples: 380
+                Accuracy: 0.8289 (82.89%)
+                Precision: 0.8898
+                Recall: 0.8481
+                F1 Score: 0.8404
+                ================================================================================
+                

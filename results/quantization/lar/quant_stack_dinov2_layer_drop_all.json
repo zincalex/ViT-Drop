@@ -1,0 +1,295 @@
+{
+  "dataset": "lar",
+  "arch": "dinov2",
+  "method": "layer_drop_all",
+  "epochs": 5,
+  "train_split": "train",
+  "eval_split": "test",
+  "quant_compute_dtype": "fp16",
+  "gpu": "NVIDIA A40",
+  "timestamp": "2026-09-24T04:16:43",
+  "results": [
+    {
+      "arch": "dinov2",
+      "method": "layer_drop_all",
+      "drop_n": 0,
+      "precision": "fp32",
+      "weight_mb": 4335.376968383789,
+      "quantized_layers": 0,
+      "quantization_seconds": 0.0,
+      "benchmark": [
+        {
+          "batch_size": 1,
+          "throughput_imgs_s": 3.3340317581184444,
+          "throughput_std": 0.004319880069326416,
+          "latency_ms": 299.9376583099365,
+          "peak_mem_gb": 4.636000633239746
+        },
+        {
+          "batch_size": 8,
+          "throughput_imgs_s": 3.4988461683428156,
+          "throughput_std": 0.001263073011655299,
+          "latency_ms": 2286.4683548609414,
+          "peak_mem_gb": 7.335227966308594
+        },
+        {
+          "batch_size": 128,
+          "oom": true
+        }
+      ],
+      "accuracy": 0.9848484848484849,
+      "macro_precision": 0.9857142857142858,
+      "macro_recall": 0.9848484848484849,
+      "macro_f1": 0.9849547511312218
+    },
+    {
+      "arch": "dinov2",
+      "method": "layer_drop_all",
+      "drop_n": 0,
+      "precision": "bf16",
+      "weight_mb": 2167.6884841918945,
+      "quantized_layers": 0,
+      "quantization_seconds": 0.0,
+      "benchmark": [
+        {
+          "batch_size": 1,
+          "throughput_imgs_s": 11.040297919370316,
+          "throughput_std": 0.007700289317690997,
+          "latency_ms": 90.5773099263509,
+          "peak_mem_gb": 2.326585292816162
+        },
+        {
+          "batch_size": 8,
+          "throughput_imgs_s": 11.397277588190258,
+          "throughput_std": 0.004805671906413925,
+          "latency_ms": 701.9221353530884,
+          "peak_mem_gb": 3.677031993865967
+        },
+        {
+          "batch_size": 128,
+          "throughput_imgs_s": 11.599556872500946,
+          "throughput_std": 0.004653795128701327,
+          "latency_ms": 11034.906075795492,
+          "peak_mem_gb": 26.817253589630127
+        }
+      ],
+      "accuracy": 0.9848484848484849,
+      "macro_precision": 0.9857142857142858,
+      "macro_recall": 0.9848484848484849,
+      "macro_f1": 0.9849547511312218
+    },
+    {
+      "arch": "dinov2",
+      "method": "layer_drop_all",
+      "drop_n": 0,
+      "precision": "int8",
+      "weight_mb": 1087.6884841918945,
+      "quantized_layers": 240,
+      "quantization_seconds": 6.0,
+      "benchmark": [
+        {
+          "batch_size": 1,
+          "throughput_imgs_s": 5.065410574235008,
+          "throughput_std": 0.0020051028428351224,
+          "latency_ms": 197.41739432017008,
+          "peak_mem_gb": 1.2850308418273926
+        },
+        {
+          "batch_size": 8,
+          "throughput_imgs_s": 8.002113163035025,
+          "throughput_std": 0.003680461825049682,
+          "latency_ms": 999.7361358006796,
+          "peak_mem_gb": 2.635952949523926
+        },
+        {
+          "batch_size": 128,
+          "throughput_imgs_s": 8.505454882316418,
+          "throughput_std": 0.00015486609947528378,
+          "latency_ms": 15049.16571935018,
+          "peak_mem_gb": 25.776212215423584
+        }
+      ],
+      "accuracy": 0.9848484848484849,
+      "macro_precision": 0.9857142857142858,
+      "macro_recall": 0.9848484848484849,
+      "macro_f1": 0.9849547511312218
+    },
+    {
+      "arch": "dinov2",
+      "method": "layer_drop_all",
+      "drop_n": 0,
+      "precision": "int4",
+      "weight_mb": 547.6884841918945,
+      "quantized_layers": 240,
+      "quantization_seconds": 5.3,
+      "benchmark": [
+        {
+          "batch_size": 1,
+          "throughput_imgs_s": 10.236485899270464,
+          "throughput_std": 0.0066791250499542805,
+          "latency_ms": 97.68981615702312,
+          "peak_mem_gb": 0.781456470489502
+        },
+        {
+          "batch_size": 8,
+          "throughput_imgs_s": 10.777323511506857,
+          "throughput_std": 0.008851752352157637,
+          "latency_ms": 742.2998285293579,
+          "peak_mem_gb": 2.1315369606018066
+        },
+        {
+          "batch_size": 128,
+          "throughput_imgs_s": 11.411976945674787,
+          "throughput_std": 0.0003340127043070249,
+          "latency_ms": 11216.286250750223,
+          "peak_mem_gb": 25.271758556365967
+        }
+      ],
+      "accuracy": 0.9848484848484849,
+      "macro_precision": 0.9857142857142858,
+      "macro_recall": 0.9848484848484849,
+      "macro_f1": 0.9849547511312218
+    },
+    {
+      "arch": "dinov2",
+      "method": "layer_drop_all",
+      "drop_n": 24,
+      "precision": "fp32",
+      "weight_mb": 3110.255874633789,
+      "quantized_layers": 0,
+      "quantization_seconds": 0.0,
+      "benchmark": [
+        {
+          "batch_size": 1,
+          "throughput_imgs_s": 4.800728527422868,
+          "throughput_std": 0.004014791612325404,
+          "latency_ms": 208.30186367034912,
+          "peak_mem_gb": 3.4403796195983887
+        },
+        {
+          "batch_size": 8,
+          "throughput_imgs_s": 5.036020687042362,
+          "throughput_std": 0.0023032369861372675,
+          "latency_ms": 1588.5561577479045,
+          "peak_mem_gb": 6.138821601867676
+        },
+        {
+          "batch_size": 128,
+          "oom": true
+        }
+      ],
+      "accuracy": 0.9924242424242424,
+      "macro_precision": 0.9924807779285392,
+      "macro_recall": 0.9924242424242424,
+      "macro_f1": 0.992424025017436
+    },
+    {
+      "arch": "dinov2",
+      "method": "layer_drop_all",
+      "drop_n": 24,
+      "precision": "bf16",
+      "weight_mb": 1555.1279373168945,
+      "quantized_layers": 0,
+      "quantization_seconds": 0.0,
+      "benchmark": [
+        {
+          "batch_size": 1,
+          "throughput_imgs_s": 16.174453192108373,
+          "throughput_std": 0.008961088776715326,
+          "latency_ms": 61.82591120402018,
+          "peak_mem_gb": 1.7283825874328613
+        },
+        {
+          "batch_size": 8,
+          "throughput_imgs_s": 16.775877116695646,
+          "throughput_std": 0.014367985972606787,
+          "latency_ms": 476.8755642573039,
+          "peak_mem_gb": 3.078829288482666
+        },
+        {
+          "batch_size": 128,
+          "throughput_imgs_s": 17.048365508395353,
+          "throughput_std": 0.0007029788243769939,
+          "latency_ms": 7508.0511474609375,
+          "peak_mem_gb": 26.219050884246826
+        }
+      ],
+      "accuracy": 0.9924242424242424,
+      "macro_precision": 0.9924807779285392,
+      "macro_recall": 0.9924242424242424,
+      "macro_f1": 0.992424025017436
+    },
+    {
+      "arch": "dinov2",
+      "method": "layer_drop_all",
+      "drop_n": 24,
+      "precision": "int8",
+      "weight_mb": 781.1279373168945,
+      "quantized_layers": 164,
+      "quantization_seconds": 3.71,
+      "benchmark": [
+        {
+          "batch_size": 1,
+          "throughput_imgs_s": 7.359505041582309,
+          "throughput_std": 0.035009980428489955,
+          "latency_ms": 135.88178475697836,
+          "peak_mem_gb": 0.9812793731689453
+        },
+        {
+          "batch_size": 8,
+          "throughput_imgs_s": 11.665078855549858,
+          "throughput_std": 0.00488415466005707,
+          "latency_ms": 685.8077430725098,
+          "peak_mem_gb": 2.332197666168213
+        },
+        {
+          "batch_size": 128,
+          "throughput_imgs_s": 12.44623489767749,
+          "throughput_std": 0.0005476978754866375,
+          "latency_ms": 10284.234654108683,
+          "peak_mem_gb": 25.47245216369629
+        }
+      ],
+      "accuracy": 0.9886363636363636,
+      "macro_precision": 0.9888591800356507,
+      "macro_recall": 0.9886363636363636,
+      "macro_f1": 0.9886346240823853
+    },
+    {
+      "arch": "dinov2",
+      "method": "layer_drop_all",
+      "drop_n": 24,
+      "precision": "int4",
+      "weight_mb": 394.12793731689453,
+      "quantized_layers": 164,
+      "quantization_seconds": 3.72,
+      "benchmark": [
+        {
+          "batch_size": 1,
+          "throughput_imgs_s": 14.907464752100545,
+          "throughput_std": 0.008756818613111008,
+          "latency_ms": 67.08051045735677,
+          "peak_mem_gb": 0.619260311126709
+        },
+        {
+          "batch_size": 8,
+          "throughput_imgs_s": 15.722635091567817,
+          "throughput_std": 0.01436604852740643,
+          "latency_ms": 508.8209851582845,
+          "peak_mem_gb": 1.9697070121765137
+        },
+        {
+          "batch_size": 128,
+          "throughput_imgs_s": 16.7594229815344,
+          "throughput_std": 2.232264364729332e-05,
+          "latency_ms": 7637.4944496154785,
+          "peak_mem_gb": 25.109928607940674
+        }
+      ],
+      "accuracy": 0.9924242424242424,
+      "macro_precision": 0.9924807779285392,
+      "macro_recall": 0.9924242424242424,
+      "macro_f1": 0.992424025017436
+    }
+  ]
+}

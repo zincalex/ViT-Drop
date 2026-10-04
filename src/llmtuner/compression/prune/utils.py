@@ -1,6 +1,77 @@
-import torch
-from torch import nn as nn, cuda
 import os
+import torch
+
+from torch import nn as nn, cuda
+from transformers import PretrainedConfig, AutoConfig
+
+from .wrapper import HiddenStatesRecordWrapper
+
+
+def create_recording_wrappers(module_pre_norm, module, drop_norm):
+    if drop_norm:
+        wrapped_module_pre_norm = HiddenStatesRecordWrapper(module_pre_norm, record_input=True, record_output=False)
+    else:
+        wrapped_module_pre_norm = HiddenStatesRecordWrapper(module_pre_norm, record_input=False, record_output=True)
+    wrapped_module = HiddenStatesRecordWrapper(module, record_input=False, record_output=True)
+
+    return wrapped_module_pre_norm, wrapped_module
+
+
+def is_vision_model(model) -> bool:
+    if hasattr(model, 'config'):
+        config = model.config
+    elif isinstance(model, PretrainedConfig):
+        config = model
+    elif isinstance(model, str):
+        config = AutoConfig.from_pretrained(model, trust_remote_code=True)
+    else:
+        return False
+
+    return hasattr(config, 'image_size') or hasattr(config, 'patch_size')
+
+
+def get_vision_model_layers(model):
+    base_prefix = getattr(model, 'base_model_prefix', None)
+    base_model = getattr(model, base_prefix, model)
+
+    if base_prefix == "swinv2":
+        layers = []
+        stage_info = []
+        for stage_idx, stage in enumerate(base_model.encoder.layers):
+            stage_start = len(layers)
+            layers.extend(stage.blocks)
+            stage_end = len(layers)
+            stage_info.append({'stage_idx': stage_idx, 'start_layer': stage_start, 'end_layer': stage_end,
+                'depth': len(stage.blocks), 'stage_module': stage})
+
+        if not hasattr(model, 'swinv2_stage_info'):
+            model.swinv2_stage_info = stage_info
+    elif base_prefix == "dinov3_vit":   # DINOv3 no encoder submodule
+        layers = base_model.layer
+    else:                               # ViT and DINOv2 use encoder.layer directly
+        layers = base_model.encoder.layer
+
+    return layers
+
+
+@torch.no_grad()
+def advance_swinv2_hierarchical_stage(stage_inputs, stage_data, input_dimensions, num_samples):
+    stage_module = stage_data['stage_module']
+
+    stage_outputs = []
+    for j in range(num_samples):  # Forward through all blocks in this stage
+        hidden_states = stage_inputs[j]
+        for block in stage_module.blocks:
+            layer_output = block(hidden_states, input_dimensions)
+            hidden_states = layer_output[0]
+
+        if stage_module.downsample is not None:
+            hidden_states = stage_module.downsample(hidden_states, input_dimensions)
+
+        stage_outputs.append(hidden_states)
+
+    return stage_outputs
+
 
 def print_gpu_memory(accelerator):
     if accelerator.is_local_main_process:  # 🔍
@@ -16,17 +87,6 @@ def print_gpu_memory_device():
 
 
 def find_modules(module, layers=[], name='') -> dict:
-    """
-    Recursively find the layers of a certain type in a module.
-
-    Args:
-        module (nn.Module): PyTorch module.
-        layers (list): List of layer types to find.
-        name (str): Name of the module.
-
-    Returns:
-        dict: Dictionary of layers of the given type(s) within the module.
-    """
     if type(module) in layers:
         return {name: module}
     res = {}
@@ -38,7 +98,6 @@ def find_modules(module, layers=[], name='') -> dict:
 
 
 def find_linears(module) -> dict:
-    # 🔍 find only the expert weights
     res = find_modules(module, [nn.Linear])
     return res
 
@@ -73,9 +132,6 @@ def check_sparsity(model):
 
 @torch.no_grad()
 def check_sparsity_from_state_dict(state_dict):
-    """
-    🔍 This function has been rewritten to calculate sparsity from "state_dict".
-    """
     # Get corresponding names for each layer
     layer_params = {}
     for name in sorted(list(state_dict.keys())):
@@ -107,36 +163,96 @@ def check_sparsity_from_state_dict(state_dict):
 
 @torch.no_grad()
 def prepare_calibration_input(model, dataloader, num_samples=16):
-    layers = model.model.layers
-
-    cache = {"inputs": [], "attention_mask": [], "position_ids": [], "cache_position": []}
+    cache = {"inputs": [], "attention_mask": [], "position_ids": [], "cache_position": [],
+             "position_embeddings": []}
 
     class Catcher(nn.Module):
-        def __init__(self, module):
+        def __init__(self, module, is_vision=False, embeddings=None, dinov3_model=None):
             super().__init__()
             self.module = module
             self.self_attn = None
+            self.is_vision = is_vision
+            self.embeddings = embeddings
+            self.dinov3_model = dinov3_model
 
-        def forward(self, input, **kwargs):
-            # print(input.shape)
-            cache['inputs'].append(input)
-            cache['attention_mask'].append(kwargs['attention_mask'])
-            cache['position_ids'].append(kwargs['position_ids'])
-            cache['cache_position'].append(kwargs['cache_position'] if 'cache_position' in kwargs else None)
+        def forward(self, *args, **kwargs):
+            if self.embeddings is not None: # SwinV2 patch embeddings case
+                pixel_values = args[0]
+                embeddings, output_dimensions = self.module(pixel_values)
+                cache['inputs'].append(embeddings)
+            elif self.dinov3_model is not None: # DINOv3: capture hidden_states and position_embeddings
+                hidden_states = args[0]
+                cache['inputs'].append(hidden_states)
+                cache['position_embeddings'].append(kwargs.get('position_embeddings'))
+            else: # Standard layer case (vision or language)
+                hidden_states = args[0]
+                cache['inputs'].append(hidden_states)
+                if not self.is_vision:
+                    cache['attention_mask'].append(kwargs.get('attention_mask'))
+                    cache['position_ids'].append(kwargs.get('position_ids'))
+                    cache['cache_position'].append(kwargs.get('cache_position'))
+                    raise ValueError
+
+            # Common for all vision models
+            cache['attention_mask'].append(None)
+            cache['position_ids'].append(None)
+            cache['cache_position'].append(None)
             raise ValueError
 
-    layers[0] = Catcher(layers[0])
-    for index, batch in enumerate(dataloader):
-        if index >= num_samples:  # 🔍 limit the number of samples in each device, batch_size must be 1
-            break
-        try:
-            model(**batch)
-        except ValueError:
-            pass
-    layers[0] = layers[0].module
+    def run_calibration_loop(model, dataloader, num_samples, is_vision):
+        for index, batch in enumerate(dataloader):
+            if index >= num_samples:
+                break
+            try:
+                if is_vision:
+                    pixel_values = batch["pixel_values"]
+                    model_dtype = next(model.parameters()).dtype
+                    if pixel_values.dtype != model_dtype:
+                        pixel_values = pixel_values.to(dtype=model_dtype)
+                    model(pixel_values=pixel_values)
+                else:
+                    model(**batch)
+            except ValueError:
+                pass
+
+    is_vision = is_vision_model(model)
+    if is_vision and model.config.model_type == "swinv2":    # Replace patch embeddings
+        base_prefix = getattr(model, 'base_model_prefix', None)
+        base_model = getattr(model, base_prefix)
+        original_patch_embeddings = base_model.embeddings.patch_embeddings
+        base_model.embeddings.patch_embeddings = Catcher(original_patch_embeddings,is_vision=is_vision,embeddings=True)
+        run_calibration_loop(model, dataloader, num_samples, is_vision)
+        base_model.embeddings.patch_embeddings = original_patch_embeddings
+    elif is_vision and model.config.model_type == "dinov3_vit": # DINOv3: layers need position_embeddings, so we intercept the first layer
+        layers = get_vision_model_layers(model)
+        original_layer = layers[0]
+        layers[0] = Catcher(original_layer, is_vision=is_vision, dinov3_model=model)
+        run_calibration_loop(model, dataloader, num_samples, is_vision)
+        layers[0] = original_layer
+
+        if cache['position_embeddings']: # Store position_embeddings on model for later use in forward passes
+            model.dinov3_position_embeddings = cache['position_embeddings']
+    else:
+        layers = model.model.layers if not is_vision else get_vision_model_layers(model)
+        original_layer = layers[0]
+        layers[0] = Catcher(original_layer, is_vision=is_vision)
+        run_calibration_loop(model, dataloader, num_samples, is_vision)
+        layers[0] = original_layer
+
     outputs = [None] * len(cache['inputs'])
     return cache['inputs'], outputs, cache['attention_mask'], cache['position_ids'], cache['cache_position']
 
+
+def get_position_embeddings(model, hidden_states, position_ids):
+    model_base = getattr(model, "model", None)
+    rotary_emb = getattr(model_base, "rotary_emb", None) if model_base is not None else None
+    if rotary_emb is not None:
+        if position_ids is None:
+            seq_len = hidden_states.shape[1]
+            position_ids = torch.arange(seq_len, device=hidden_states.device).unsqueeze(0)
+        cos, sin = rotary_emb(hidden_states, position_ids)
+        return cos, sin
+    return None
 
 
 auto_map = {
@@ -148,21 +264,36 @@ auto_map = {
                 "AutoConfig": "configuration_dropped_mistral.MistralConfig",
                 "AutoModelForCausalLM": "modeling_dropped_mistral.MistralForCausalLM"
             },
-    "deepseek":
+    "deepseek_v3":
                 {
-                "AutoConfig": "configuration_deepseek.DeepseekConfig",
-                "AutoModelForCausalLM": "modeling_dropped_deepseek.DeepseekForCausalLM"
-                },
-    "gemma2":
-                {
+                "AutoConfig": "configuration_deepseek.DeepseekV3Config",
+                "AutoModelForCausalLM": "modeling_dropped_deepseek.DeepseekV3ForCausalLM"
+            },
+    "gemma2": {
                 "AutoConfig": "configuration_dropped_gemma2.Gemma2Config",
                 "AutoModelForCausalLM": "modeling_dropped_gemma2.Gemma2ForCausalLM"
-                },
-    "baichuan":
-                {
-                "AutoConfig": "configuration_dropped_baichuan.BaichuanConfig",
-                "AutoModelForCausalLM": "modeling_dropped_baichuan.BaichuanForCausalLM"
-                }
+            },
+    "gemma3_text": {
+                "AutoConfig": "configuration_dropped_gemma3.Gemma3TextConfig",
+                "AutoModelForCausalLM": "modeling_dropped_gemma3.Gemma3ForCausalLM"
+            },
+
+    "vit": {
+                "AutoConfig": "configuration_dropped_vit.ViTConfig",
+                "AutoModelForImageClassification": "modeling_dropped_vit.ViTForImageClassification"
+            },
+    "dinov2": {
+                "AutoConfig": "configuration_dropped_dinov2.Dinov2Config",
+                "AutoModelForImageClassification": "modeling_dropped_dinov2.Dinov2ForImageClassification"
+            },
+    "dinov3_vit": {
+                "AutoConfig": "configuration_dropped_dinov3.DINOv3ViTConfig",
+                "AutoModel": "modeling_dropped_dinov3.DINOv3ViTModel"
+            },
+    "swinv2": {
+        "AutoConfig": "configuration_dropped_swinv2.Swinv2Config",
+        "AutoModelForImageClassification": "modeling_dropped_swinv2.Swinv2ForImageClassification"
+    },
 }
 
 CUSTOM_FILE ={
@@ -174,7 +305,7 @@ CUSTOM_FILE ={
         "config": os.path.join(os.path.dirname(__file__), "models/configuration_dropped_mistral.py"),
         "model": os.path.join(os.path.dirname(__file__), "models/modeling_dropped_mistral.py")
     },
-    "deepseek": {
+    "deepseek_v3": {
         "config": os.path.join(os.path.dirname(__file__), "models/configuration_deepseek.py"),
         "model": os.path.join(os.path.dirname(__file__), "models/modeling_dropped_deepseek.py")
     }, 
@@ -182,8 +313,25 @@ CUSTOM_FILE ={
         "config": os.path.join(os.path.dirname(__file__), "models/configuration_dropped_gemma2.py"),
         "model": os.path.join(os.path.dirname(__file__), "models/modeling_dropped_gemma2.py")
     }, 
-    "baichuan": {
-        "config": os.path.join(os.path.dirname(__file__), "models/configuration_dropped_baichuan.py"),
-        "model": os.path.join(os.path.dirname(__file__), "models/modeling_dropped_baichuan.py")
+    "gemma3_text": {
+        "config": os.path.join(os.path.dirname(__file__), "models/configuration_dropped_gemma3.py"),
+        "model": os.path.join(os.path.dirname(__file__), "models/modeling_dropped_gemma3.py")
+    },
+
+    "vit": {
+        "config": os.path.join(os.path.dirname(__file__), "models/configuration_dropped_vit.py"),
+        "model": os.path.join(os.path.dirname(__file__), "models/modeling_dropped_vit.py")
+    },
+    "dinov2": {
+        "config": os.path.join(os.path.dirname(__file__), "models/configuration_dropped_dinov2.py"),
+        "model": os.path.join(os.path.dirname(__file__), "models/modeling_dropped_dinov2.py")
+    },
+    "dinov3_vit": {
+        "config": os.path.join(os.path.dirname(__file__), "models/configuration_dropped_dinov3.py"),
+        "model": os.path.join(os.path.dirname(__file__), "models/modeling_dropped_dinov3.py")
+    },
+    "swinv2": {
+        "config": os.path.join(os.path.dirname(__file__), "models/configuration_dropped_swinv2.py"),
+        "model": os.path.join(os.path.dirname(__file__), "models/modeling_dropped_swinv2.py")
     }
 }

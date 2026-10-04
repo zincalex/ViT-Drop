@@ -1,0 +1,16 @@
+
+                RESULTS
+                Model: ./deit_model
+                Dataset: CrossD
+                Dataset classes: 44
+                Model classes: 1000
+                Head fine-tuning: YES
+                Pruning method: layer_drop_all
+                Layers dropped: 8
+                Total samples: 68100
+                Accuracy: 0.5077 (50.77%)
+                Precision: 0.4532
+                Recall: 0.3706
+                F1 Score: 0.3123
+                ================================================================================
+                

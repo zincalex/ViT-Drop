@@ -1,0 +1,16 @@
+
+                RESULTS
+                Model: ./swinv2_model
+                Dataset: Kaggle38
+                Dataset classes: 38
+                Model classes: 1000
+                Head fine-tuning: YES
+                Pruning method: layer_drop_attn
+                Layers dropped: 20
+                Total samples: 2880
+                Accuracy: 0.6347 (63.47%)
+                Precision: 0.5104
+                Recall: 0.4234
+                F1 Score: 0.4102
+                ================================================================================
+                

@@ -1,0 +1,16 @@
+
+                RESULTS
+                Model: ./swinv2_model
+                Dataset: lar
+                Dataset classes: 4
+                Model classes: 1000
+                Head fine-tuning: YES
+                Pruning method: block_drop
+                Layers dropped: 12
+                Total samples: 280
+                Accuracy: 0.9679 (96.79%)
+                Precision: 0.9701
+                Recall: 0.9666
+                F1 Score: 0.9681
+                ================================================================================
+                

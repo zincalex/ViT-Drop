@@ -1,0 +1,16 @@
+
+                RESULTS
+                Model: ./deit_model
+                Dataset: Pest
+                Dataset classes: 10
+                Model classes: 1000
+                Head fine-tuning: YES
+                Pruning method: layer_drop_attn
+                Layers dropped: 8
+                Total samples: 380
+                Accuracy: 0.5947 (59.47%)
+                Precision: 0.6157
+                Recall: 0.5950
+                F1 Score: 0.5732
+                ================================================================================
+                

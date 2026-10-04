@@ -1,0 +1,16 @@
+
+                RESULTS
+                Model: ./dinov3_vit_model
+                Dataset: LCZ42
+                Dataset classes: 17
+                Model classes: 17
+                Head fine-tuning: YES
+                Pruning method: layer_drop_mlp
+                Layers dropped: 24
+                Total samples: 24200
+                Accuracy: 0.2652 (26.52%)
+                Precision: 0.0511
+                Recall: 0.1329
+                F1 Score: 0.0727
+                ================================================================================
+                

@@ -5,11 +5,10 @@ from datetime import timedelta
 from typing import TYPE_CHECKING
 
 from transformers import TrainerCallback
-from transformers.trainer_utils import PREFIX_CHECKPOINT_DIR, has_length
+from transformers.trainer_utils import has_length
 
 from .constants import LOG_FILE_NAME
 from .logging import get_logger
-from .misc import fix_valuehead_checkpoint
 
 
 if TYPE_CHECKING:
@@ -17,19 +16,6 @@ if TYPE_CHECKING:
 
 
 logger = get_logger(__name__)
-
-
-class FixValueHeadModelCallback(TrainerCallback):
-    def on_save(self, args: "TrainingArguments", state: "TrainerState", control: "TrainerControl", **kwargs):
-        r"""
-        Event called after a checkpoint save.
-        """
-        if args.should_save:
-            fix_valuehead_checkpoint(
-                model=kwargs.pop("model"),
-                output_dir=os.path.join(args.output_dir, "{}-{}".format(PREFIX_CHECKPOINT_DIR, state.global_step)),
-                safe_serialization=args.save_safetensors,
-            )
 
 
 class LogCallback(TrainerCallback):

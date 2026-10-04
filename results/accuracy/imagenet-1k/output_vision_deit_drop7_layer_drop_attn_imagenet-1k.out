@@ -1,0 +1,16 @@
+
+                RESULTS
+                Model: ./deit_model_imnet
+                Dataset: imagenet-1k-orig
+                Dataset classes: 1000
+                Model classes: 1000
+                Head fine-tuning: SKIPPED
+                Pruning method: layer_drop_attn
+                Layers dropped: 7
+                Total samples: 50000
+                Accuracy: 0.5644 (56.44%)
+                Precision: 0.6026
+                Recall: 0.5644
+                F1 Score: 0.5623
+                ================================================================================
+                

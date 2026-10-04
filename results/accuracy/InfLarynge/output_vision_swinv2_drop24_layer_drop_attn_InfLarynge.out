@@ -1,0 +1,16 @@
+
+                RESULTS
+                Model: ./swinv2_model
+                Dataset: InfLarynge
+                Dataset classes: 4
+                Model classes: 1000
+                Head fine-tuning: YES
+                Pruning method: layer_drop_attn
+                Layers dropped: 24
+                Total samples: 240
+                Accuracy: 0.9042 (90.42%)
+                Precision: 0.9017
+                Recall: 0.9042
+                F1 Score: 0.9018
+                ================================================================================
+                

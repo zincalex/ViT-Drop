@@ -1,0 +1,16 @@
+
+                RESULTS
+                Model: ./dinov2_model_imnet
+                Dataset: imagenet-1k-orig
+                Dataset classes: 1000
+                Model classes: 1000
+                Head fine-tuning: SKIPPED
+                Pruning method: block_drop
+                Layers dropped: 5
+                Total samples: 50000
+                Accuracy: 0.8627 (86.27%)
+                Precision: 0.8659
+                Recall: 0.8627
+                F1 Score: 0.8614
+                ================================================================================
+                

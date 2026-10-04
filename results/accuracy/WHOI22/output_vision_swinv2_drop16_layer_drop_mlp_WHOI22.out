@@ -1,0 +1,16 @@
+
+                RESULTS
+                Model: ./swinv2_model
+                Dataset: WHOI22
+                Dataset classes: 22
+                Model classes: 1000
+                Head fine-tuning: YES
+                Pruning method: layer_drop_mlp
+                Layers dropped: 16
+                Total samples: 3300
+                Accuracy: 0.8976 (89.76%)
+                Precision: 0.9042
+                Recall: 0.8975
+                F1 Score: 0.8981
+                ================================================================================
+                

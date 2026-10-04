@@ -1,0 +1,16 @@
+
+                RESULTS
+                Model: ./vit_model
+                Dataset: Bark
+                Dataset classes: 23
+                Model classes: 1000
+                Head fine-tuning: YES
+                Pruning method: layer_drop_attn
+                Layers dropped: 4
+                Total samples: 4940
+                Accuracy: 0.8045 (80.45%)
+                Precision: 0.7527
+                Recall: 0.7465
+                F1 Score: 0.7315
+                ================================================================================
+                

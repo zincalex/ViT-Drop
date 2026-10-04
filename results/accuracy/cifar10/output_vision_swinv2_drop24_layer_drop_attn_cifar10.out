@@ -1,0 +1,16 @@
+
+                RESULTS
+                Model: ./swinv2_model
+                Dataset: cifar10
+                Dataset classes: 10
+                Model classes: 1000
+                Head fine-tuning: YES
+                Pruning method: layer_drop_attn
+                Layers dropped: 24
+                Total samples: 10000
+                Accuracy: 0.4508 (45.08%)
+                Precision: 0.4913
+                Recall: 0.4508
+                F1 Score: 0.4434
+                ================================================================================
+                

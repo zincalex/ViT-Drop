@@ -1,0 +1,16 @@
+
+                RESULTS
+                Model: ./deit_model
+                Dataset: ColorBG
+                Dataset classes: 3
+                Model classes: 1000
+                Head fine-tuning: YES
+                Pruning method: layer_drop_mlp
+                Layers dropped: 12
+                Total samples: 60
+                Accuracy: 0.5000 (50.00%)
+                Precision: 0.4400
+                Recall: 0.4533
+                F1 Score: 0.3686
+                ================================================================================
+                

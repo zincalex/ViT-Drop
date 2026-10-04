@@ -1,0 +1,16 @@
+
+                RESULTS
+                Model: ./dinov2_model
+                Dataset: CrossD
+                Dataset classes: 44
+                Model classes: 1000
+                Head fine-tuning: YES
+                Pruning method: layer_drop_all
+                Layers dropped: 24
+                Total samples: 68100
+                Accuracy: 0.5881 (58.81%)
+                Precision: 0.5589
+                Recall: 0.4543
+                F1 Score: 0.4087
+                ================================================================================
+                

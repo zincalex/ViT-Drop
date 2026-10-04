@@ -1,0 +1,28 @@
+{
+  "model_name": "swinv2_original",
+  "model_path": "./swinv2_model_original",
+  "gpu": "NVIDIA A40",
+  "image_size": 256,
+  "flops_g": 41.659875328,
+  "baseline_file": null,
+  "baseline_flops_g": null,
+  "idle_power_w": 66.22666666666666,
+  "num_runs": 5,
+  "num_iterations": 100,
+  "timestamp": "2026-09-02T00:36:37",
+  "results": [
+    {
+      "Batch Size": 128,
+      "Latency (ms)": 298.37689208984375,
+      "Latency Std (ms)": 0.701422494518696,
+      "Throughput (imgs/s)": 428.9900141076831,
+      "Throughput Std (imgs/s)": 1.0081628632245336,
+      "Memory (GB)": 3.4822092056274414,
+      "Memory (%)": 7.839059137975098,
+      "Power (W)": 297.5015177065767,
+      "Net Power (W)": 231.27485103991003,
+      "Energy/Image (J)": 0.5391147659251958,
+      "FLOPs (G)": 41.659875328
+    }
+  ]
+}

@@ -527,5 +527,19 @@
         "prompt": "content"
       },
       "folder": "python"
+    },
+    "imagenet_val": {
+      "hf_hub_url": "zh-plus/tiny-imagenet",
+      "columns": {
+        "image": "image",
+        "label": "label"
+      }
+    },
+    "imagenet_demo": {
+      "file_name": "imagenet_demo.json",
+      "columns": {
+        "image": "image",
+        "label": "label"
+      }
     }
   }

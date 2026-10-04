@@ -1,7 +1,6 @@
-#!/usr/bin/env bash
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-ROOT_DIR="$(cd "${SCRIPT_DIR}/../.." && pwd)"
-port="21304"
+#!/usr/bin/bash
+
+port="21308"
 GPUs="0,1,2,3"
 
 dataset="c4_val"
@@ -13,23 +12,20 @@ prune_method="block_drop"
 block_drop_method="discrete"
 drop_n=8
 
-model_name=mistral-base
-model_name_or_path=mistralai/Mistral-7B-v0.1
+model_name=llama2-13b
+model_name_or_path=meta-llama/Llama-2-13b-hf
 
 folder_name="${model_name}-${prune_method}-${block_drop_method}-drop${drop_n}"
-similarity_cache_file="${ROOT_DIR}/results_prune/cache/${model_name}-${prune_method}-${dataset}-${n_calibration_samples}samples.pt"
-
-echo ${folder_name}
-
-output_dir="${ROOT_DIR}/results_prune/${folder_name}"
+similarity_cache_file="./results_prune/cache/${model_name}-${prune_method}-${dataset}-${n_calibration_samples}samples.pt"
+output_dir=./results_prune/${folder_name}
 prune_model_save_path=${output_dir}/checkpoint
 
 CUDA_VISIBLE_DEVICES=$GPUs accelerate launch --main_process_port $port \
-  "${ROOT_DIR}/src/compress.py" \
+  src/compress.py \
   --stage prune \
   --model_name_or_path ${model_name_or_path} \
   --dataset ${dataset} \
-  --dataset_dir "${ROOT_DIR}/src/llmtuner/data" \
+  --dataset_dir ./src/llmtuner/data \
   --split "train" \
   --prune_data_type ${prune_data_type} \
   --cutoff_len ${seq_len} \
@@ -48,11 +44,11 @@ block_drop_method="post_dropping"
 only_update_config=False
 
 python \
-  "${ROOT_DIR}/src/compress.py" \
+  src/compress.py \
   --stage prune \
   --model_name_or_path ${model_name_or_path} \
   --dataset ${dataset} \
-  --dataset_dir "${ROOT_DIR}/src/llmtuner/data" \
+  --dataset_dir ./src/llmtuner/data \
   --split "train" \
   --only_update_config $only_update_config \
   --prune_data_type ${prune_data_type} \

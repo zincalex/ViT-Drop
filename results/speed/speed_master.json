@@ -1,0 +1,1822 @@
+[
+  {
+    "model": "dinov2",
+    "prune_method": "baseline",
+    "drop_num": 0,
+    "throughput": 135.9337,
+    "latency_ms": 941.6681,
+    "memory_gb": 3.7379,
+    "flops_g": 599.5696,
+    "speedup": 1.0
+  },
+  {
+    "model": "dinov2",
+    "prune_method": "layer_drop_attn",
+    "drop_num": 2,
+    "throughput": 137.8851,
+    "latency_ms": 928.3119,
+    "memory_gb": 3.7028,
+    "flops_g": 589.0566,
+    "speedup": 1.0144
+  },
+  {
+    "model": "dinov2",
+    "prune_method": "layer_drop_attn",
+    "drop_num": 4,
+    "throughput": 140.381,
+    "latency_ms": 911.8051,
+    "memory_gb": 3.6676,
+    "flops_g": 578.5436,
+    "speedup": 1.0327
+  },
+  {
+    "model": "dinov2",
+    "prune_method": "layer_drop_attn",
+    "drop_num": 6,
+    "throughput": 143.0684,
+    "latency_ms": 894.6776,
+    "memory_gb": 3.6324,
+    "flops_g": 568.0305,
+    "speedup": 1.0525
+  },
+  {
+    "model": "dinov2",
+    "prune_method": "layer_drop_attn",
+    "drop_num": 8,
+    "throughput": 145.6924,
+    "latency_ms": 878.5642,
+    "memory_gb": 3.5972,
+    "flops_g": 557.5175,
+    "speedup": 1.0718
+  },
+  {
+    "model": "dinov2",
+    "prune_method": "layer_drop_attn",
+    "drop_num": 12,
+    "throughput": 151.6329,
+    "latency_ms": 844.1442,
+    "memory_gb": 3.5268,
+    "flops_g": 536.4914,
+    "speedup": 1.1155
+  },
+  {
+    "model": "dinov2",
+    "prune_method": "layer_drop_attn",
+    "drop_num": 16,
+    "throughput": 157.9522,
+    "latency_ms": 810.3721,
+    "memory_gb": 3.4564,
+    "flops_g": 515.4654,
+    "speedup": 1.162
+  },
+  {
+    "model": "dinov2",
+    "prune_method": "layer_drop_attn",
+    "drop_num": 20,
+    "throughput": 165.2365,
+    "latency_ms": 774.6478,
+    "memory_gb": 3.386,
+    "flops_g": 494.4393,
+    "speedup": 1.2156
+  },
+  {
+    "model": "dinov2",
+    "prune_method": "layer_drop_attn",
+    "drop_num": 24,
+    "throughput": 172.7093,
+    "latency_ms": 741.1313,
+    "memory_gb": 3.3156,
+    "flops_g": 473.4132,
+    "speedup": 1.2705
+  },
+  {
+    "model": "dinov2",
+    "prune_method": "layer_drop_attn",
+    "drop_num": 28,
+    "throughput": 180.8207,
+    "latency_ms": 707.8842,
+    "memory_gb": 3.2445,
+    "flops_g": 452.3871,
+    "speedup": 1.3302
+  },
+  {
+    "model": "dinov2",
+    "prune_method": "layer_drop_attn",
+    "drop_num": 32,
+    "throughput": 189.9064,
+    "latency_ms": 674.0167,
+    "memory_gb": 3.1741,
+    "flops_g": 431.3611,
+    "speedup": 1.3971
+  },
+  {
+    "model": "dinov2",
+    "prune_method": "layer_drop_attn",
+    "drop_num": 40,
+    "throughput": 211.4456,
+    "latency_ms": 605.3568,
+    "memory_gb": 2.7509,
+    "flops_g": 389.3089,
+    "speedup": 1.5555
+  },
+  {
+    "model": "dinov2",
+    "prune_method": "layer_drop_mlp",
+    "drop_num": 2,
+    "throughput": 139.7687,
+    "latency_ms": 915.7988,
+    "memory_gb": 3.6676,
+    "flops_g": 580.1668,
+    "speedup": 1.0282
+  },
+  {
+    "model": "dinov2",
+    "prune_method": "layer_drop_mlp",
+    "drop_num": 4,
+    "throughput": 144.4301,
+    "latency_ms": 886.2419,
+    "memory_gb": 3.5972,
+    "flops_g": 560.7639,
+    "speedup": 1.0625
+  },
+  {
+    "model": "dinov2",
+    "prune_method": "layer_drop_mlp",
+    "drop_num": 6,
+    "throughput": 149.5014,
+    "latency_ms": 856.1791,
+    "memory_gb": 3.5269,
+    "flops_g": 541.3611,
+    "speedup": 1.0998
+  },
+  {
+    "model": "dinov2",
+    "prune_method": "layer_drop_mlp",
+    "drop_num": 8,
+    "throughput": 154.7609,
+    "latency_ms": 827.0827,
+    "memory_gb": 3.4565,
+    "flops_g": 521.9582,
+    "speedup": 1.1385
+  },
+  {
+    "model": "dinov2",
+    "prune_method": "layer_drop_mlp",
+    "drop_num": 12,
+    "throughput": 166.7611,
+    "latency_ms": 767.5653,
+    "memory_gb": 3.3158,
+    "flops_g": 483.1525,
+    "speedup": 1.2268
+  },
+  {
+    "model": "dinov2",
+    "prune_method": "layer_drop_mlp",
+    "drop_num": 16,
+    "throughput": 180.7197,
+    "latency_ms": 708.2794,
+    "memory_gb": 3.175,
+    "flops_g": 444.3468,
+    "speedup": 1.3295
+  },
+  {
+    "model": "dinov2",
+    "prune_method": "layer_drop_mlp",
+    "drop_num": 20,
+    "throughput": 197.0618,
+    "latency_ms": 649.5426,
+    "memory_gb": 3.0343,
+    "flops_g": 405.5411,
+    "speedup": 1.4497
+  },
+  {
+    "model": "dinov2",
+    "prune_method": "layer_drop_mlp",
+    "drop_num": 24,
+    "throughput": 217.1849,
+    "latency_ms": 589.3598,
+    "memory_gb": 2.8936,
+    "flops_g": 366.7354,
+    "speedup": 1.5977
+  },
+  {
+    "model": "dinov2",
+    "prune_method": "layer_drop_mlp",
+    "drop_num": 28,
+    "throughput": 241.2834,
+    "latency_ms": 530.4975,
+    "memory_gb": 2.7528,
+    "flops_g": 327.9297,
+    "speedup": 1.775
+  },
+  {
+    "model": "dinov2",
+    "prune_method": "layer_drop_mlp",
+    "drop_num": 32,
+    "throughput": 271.7075,
+    "latency_ms": 471.0953,
+    "memory_gb": 2.6121,
+    "flops_g": 289.124,
+    "speedup": 1.9988
+  },
+  {
+    "model": "dinov2",
+    "prune_method": "layer_drop_mlp",
+    "drop_num": 40,
+    "throughput": 363.2765,
+    "latency_ms": 352.349,
+    "memory_gb": 1.4218,
+    "flops_g": 211.5126,
+    "speedup": 2.6725
+  },
+  {
+    "model": "dinov2",
+    "prune_method": "layer_drop_all",
+    "drop_num": 2,
+    "throughput": 137.8824,
+    "latency_ms": 928.3291,
+    "memory_gb": 3.7028,
+    "flops_g": 589.0566,
+    "speedup": 1.0143
+  },
+  {
+    "model": "dinov2",
+    "prune_method": "layer_drop_all",
+    "drop_num": 4,
+    "throughput": 140.4613,
+    "latency_ms": 911.2838,
+    "memory_gb": 3.6676,
+    "flops_g": 578.5436,
+    "speedup": 1.0333
+  },
+  {
+    "model": "dinov2",
+    "prune_method": "layer_drop_all",
+    "drop_num": 6,
+    "throughput": 142.9894,
+    "latency_ms": 895.1716,
+    "memory_gb": 3.6324,
+    "flops_g": 568.0305,
+    "speedup": 1.0519
+  },
+  {
+    "model": "dinov2",
+    "prune_method": "layer_drop_all",
+    "drop_num": 8,
+    "throughput": 145.7729,
+    "latency_ms": 878.0785,
+    "memory_gb": 3.5972,
+    "flops_g": 557.5175,
+    "speedup": 1.0724
+  },
+  {
+    "model": "dinov2",
+    "prune_method": "layer_drop_all",
+    "drop_num": 12,
+    "throughput": 152.8474,
+    "latency_ms": 837.4369,
+    "memory_gb": 3.5092,
+    "flops_g": 532.0465,
+    "speedup": 1.1244
+  },
+  {
+    "model": "dinov2",
+    "prune_method": "layer_drop_all",
+    "drop_num": 16,
+    "throughput": 161.9641,
+    "latency_ms": 790.2987,
+    "memory_gb": 3.4036,
+    "flops_g": 502.1306,
+    "speedup": 1.1915
+  },
+  {
+    "model": "dinov2",
+    "prune_method": "layer_drop_all",
+    "drop_num": 20,
+    "throughput": 173.3695,
+    "latency_ms": 738.3082,
+    "memory_gb": 3.2805,
+    "flops_g": 467.7698,
+    "speedup": 1.2754
+  },
+  {
+    "model": "dinov2",
+    "prune_method": "layer_drop_all",
+    "drop_num": 24,
+    "throughput": 188.4404,
+    "latency_ms": 679.2601,
+    "memory_gb": 3.1397,
+    "flops_g": 428.9641,
+    "speedup": 1.3863
+  },
+  {
+    "model": "dinov2",
+    "prune_method": "layer_drop_all",
+    "drop_num": 28,
+    "throughput": 202.6242,
+    "latency_ms": 631.7116,
+    "memory_gb": 3.0342,
+    "flops_g": 399.0483,
+    "speedup": 1.4906
+  },
+  {
+    "model": "dinov2",
+    "prune_method": "layer_drop_all",
+    "drop_num": 32,
+    "throughput": 221.2727,
+    "latency_ms": 578.4722,
+    "memory_gb": 2.911,
+    "flops_g": 364.6875,
+    "speedup": 1.6278
+  },
+  {
+    "model": "dinov2",
+    "prune_method": "layer_drop_all",
+    "drop_num": 40,
+    "throughput": 270.789,
+    "latency_ms": 472.6936,
+    "memory_gb": 2.6647,
+    "flops_g": 295.9659,
+    "speedup": 1.9921
+  },
+  {
+    "model": "dinov2",
+    "prune_method": "block_drop",
+    "drop_num": 2,
+    "throughput": 142.3187,
+    "latency_ms": 899.3903,
+    "memory_gb": 3.6324,
+    "flops_g": 569.6538,
+    "speedup": 1.047
+  },
+  {
+    "model": "dinov2",
+    "prune_method": "block_drop",
+    "drop_num": 4,
+    "throughput": 150.0148,
+    "latency_ms": 853.2496,
+    "memory_gb": 3.5268,
+    "flops_g": 539.7379,
+    "speedup": 1.1036
+  },
+  {
+    "model": "dinov2",
+    "prune_method": "block_drop",
+    "drop_num": 6,
+    "throughput": 158.9992,
+    "latency_ms": 805.036,
+    "memory_gb": 3.4213,
+    "flops_g": 509.822,
+    "speedup": 1.1697
+  },
+  {
+    "model": "dinov2",
+    "prune_method": "block_drop",
+    "drop_num": 8,
+    "throughput": 168.5594,
+    "latency_ms": 759.3768,
+    "memory_gb": 3.3157,
+    "flops_g": 479.9061,
+    "speedup": 1.24
+  },
+  {
+    "model": "dinov2",
+    "prune_method": "block_drop",
+    "drop_num": 12,
+    "throughput": 192.0985,
+    "latency_ms": 666.3252,
+    "memory_gb": 3.1046,
+    "flops_g": 420.0743,
+    "speedup": 1.4132
+  },
+  {
+    "model": "dinov2",
+    "prune_method": "block_drop",
+    "drop_num": 16,
+    "throughput": 223.5436,
+    "latency_ms": 572.5956,
+    "memory_gb": 2.8935,
+    "flops_g": 360.2426,
+    "speedup": 1.6445
+  },
+  {
+    "model": "dinov2",
+    "prune_method": "block_drop",
+    "drop_num": 20,
+    "throughput": 266.9804,
+    "latency_ms": 479.437,
+    "memory_gb": 2.6823,
+    "flops_g": 300.4108,
+    "speedup": 1.964
+  },
+  {
+    "model": "dinov2",
+    "prune_method": "block_drop",
+    "drop_num": 24,
+    "throughput": 331.7615,
+    "latency_ms": 385.82,
+    "memory_gb": 2.4712,
+    "flops_g": 240.579,
+    "speedup": 2.4406
+  },
+  {
+    "model": "dinov2",
+    "prune_method": "block_drop",
+    "drop_num": 28,
+    "throughput": 437.2572,
+    "latency_ms": 292.7345,
+    "memory_gb": 2.2601,
+    "flops_g": 180.7472,
+    "speedup": 3.2167
+  },
+  {
+    "model": "dinov2",
+    "prune_method": "block_drop",
+    "drop_num": 32,
+    "throughput": 641.6447,
+    "latency_ms": 199.4887,
+    "memory_gb": 2.049,
+    "flops_g": 120.9155,
+    "speedup": 4.7203
+  },
+  {
+    "model": "dinov2",
+    "prune_method": "block_drop",
+    "drop_num": 40,
+    "throughput": 10038.3295,
+    "latency_ms": 12.7514,
+    "memory_gb": 0.2446,
+    "flops_g": 1.2519,
+    "speedup": 73.8472
+  },
+  {
+    "model": "dinov3_vit",
+    "prune_method": "baseline",
+    "drop_num": 0,
+    "throughput": 455.218,
+    "latency_ms": 281.1856,
+    "memory_gb": 1.1507,
+    "flops_g": 123.1082,
+    "speedup": 1.0
+  },
+  {
+    "model": "dinov3_vit",
+    "prune_method": "layer_drop_attn",
+    "drop_num": 2,
+    "throughput": 475.6459,
+    "latency_ms": 269.1099,
+    "memory_gb": 1.1351,
+    "flops_g": 119.4851,
+    "speedup": 1.0449
+  },
+  {
+    "model": "dinov3_vit",
+    "prune_method": "layer_drop_attn",
+    "drop_num": 4,
+    "throughput": 497.5502,
+    "latency_ms": 257.2609,
+    "memory_gb": 1.1194,
+    "flops_g": 115.8621,
+    "speedup": 1.093
+  },
+  {
+    "model": "dinov3_vit",
+    "prune_method": "layer_drop_attn",
+    "drop_num": 6,
+    "throughput": 522.8523,
+    "latency_ms": 244.8113,
+    "memory_gb": 1.1038,
+    "flops_g": 112.2391,
+    "speedup": 1.1486
+  },
+  {
+    "model": "dinov3_vit",
+    "prune_method": "layer_drop_attn",
+    "drop_num": 8,
+    "throughput": 549.8601,
+    "latency_ms": 232.7869,
+    "memory_gb": 1.0881,
+    "flops_g": 108.616,
+    "speedup": 1.2079
+  },
+  {
+    "model": "dinov3_vit",
+    "prune_method": "layer_drop_attn",
+    "drop_num": 12,
+    "throughput": 616.2468,
+    "latency_ms": 207.7095,
+    "memory_gb": 1.0568,
+    "flops_g": 101.37,
+    "speedup": 1.3537
+  },
+  {
+    "model": "dinov3_vit",
+    "prune_method": "layer_drop_attn",
+    "drop_num": 16,
+    "throughput": 699.5798,
+    "latency_ms": 182.9674,
+    "memory_gb": 1.0256,
+    "flops_g": 94.1239,
+    "speedup": 1.5368
+  },
+  {
+    "model": "dinov3_vit",
+    "prune_method": "layer_drop_attn",
+    "drop_num": 20,
+    "throughput": 808.3287,
+    "latency_ms": 158.3518,
+    "memory_gb": 0.9943,
+    "flops_g": 86.8778,
+    "speedup": 1.7757
+  },
+  {
+    "model": "dinov3_vit",
+    "prune_method": "layer_drop_attn",
+    "drop_num": 24,
+    "throughput": 956.789,
+    "latency_ms": 133.7812,
+    "memory_gb": 0.9134,
+    "flops_g": 79.6318,
+    "speedup": 2.1018
+  },
+  {
+    "model": "dinov3_vit",
+    "prune_method": "layer_drop_mlp",
+    "drop_num": 2,
+    "throughput": 472.2732,
+    "latency_ms": 271.03,
+    "memory_gb": 1.1195,
+    "flops_g": 116.498,
+    "speedup": 1.0375
+  },
+  {
+    "model": "dinov3_vit",
+    "prune_method": "layer_drop_mlp",
+    "drop_num": 4,
+    "throughput": 491.4278,
+    "latency_ms": 260.4659,
+    "memory_gb": 1.0882,
+    "flops_g": 109.8877,
+    "speedup": 1.0795
+  },
+  {
+    "model": "dinov3_vit",
+    "prune_method": "layer_drop_mlp",
+    "drop_num": 6,
+    "throughput": 512.4356,
+    "latency_ms": 249.7878,
+    "memory_gb": 1.0569,
+    "flops_g": 103.2775,
+    "speedup": 1.1257
+  },
+  {
+    "model": "dinov3_vit",
+    "prune_method": "layer_drop_mlp",
+    "drop_num": 8,
+    "throughput": 535.2853,
+    "latency_ms": 239.1252,
+    "memory_gb": 1.0256,
+    "flops_g": 96.6673,
+    "speedup": 1.1759
+  },
+  {
+    "model": "dinov3_vit",
+    "prune_method": "layer_drop_mlp",
+    "drop_num": 12,
+    "throughput": 587.9021,
+    "latency_ms": 217.7236,
+    "memory_gb": 0.9631,
+    "flops_g": 83.4468,
+    "speedup": 1.2915
+  },
+  {
+    "model": "dinov3_vit",
+    "prune_method": "layer_drop_mlp",
+    "drop_num": 16,
+    "throughput": 651.7927,
+    "latency_ms": 196.3817,
+    "memory_gb": 0.9005,
+    "flops_g": 70.2264,
+    "speedup": 1.4318
+  },
+  {
+    "model": "dinov3_vit",
+    "prune_method": "layer_drop_mlp",
+    "drop_num": 20,
+    "throughput": 731.6104,
+    "latency_ms": 174.9568,
+    "memory_gb": 0.8379,
+    "flops_g": 57.006,
+    "speedup": 1.6072
+  },
+  {
+    "model": "dinov3_vit",
+    "prune_method": "layer_drop_mlp",
+    "drop_num": 24,
+    "throughput": 832.3062,
+    "latency_ms": 153.7898,
+    "memory_gb": 0.6748,
+    "flops_g": 43.7855,
+    "speedup": 1.8284
+  },
+  {
+    "model": "dinov3_vit",
+    "prune_method": "layer_drop_all",
+    "drop_num": 2,
+    "throughput": 471.7686,
+    "latency_ms": 271.3199,
+    "memory_gb": 1.1195,
+    "flops_g": 116.498,
+    "speedup": 1.0364
+  },
+  {
+    "model": "dinov3_vit",
+    "prune_method": "layer_drop_all",
+    "drop_num": 4,
+    "throughput": 491.5152,
+    "latency_ms": 260.4197,
+    "memory_gb": 1.0882,
+    "flops_g": 109.8877,
+    "speedup": 1.0797
+  },
+  {
+    "model": "dinov3_vit",
+    "prune_method": "layer_drop_all",
+    "drop_num": 6,
+    "throughput": 514.0285,
+    "latency_ms": 249.0137,
+    "memory_gb": 1.0647,
+    "flops_g": 104.7711,
+    "speedup": 1.1292
+  },
+  {
+    "model": "dinov3_vit",
+    "prune_method": "layer_drop_all",
+    "drop_num": 8,
+    "throughput": 540.9016,
+    "latency_ms": 236.6424,
+    "memory_gb": 1.0491,
+    "flops_g": 101.1481,
+    "speedup": 1.1882
+  },
+  {
+    "model": "dinov3_vit",
+    "prune_method": "layer_drop_all",
+    "drop_num": 12,
+    "throughput": 598.9109,
+    "latency_ms": 213.7217,
+    "memory_gb": 1.0021,
+    "flops_g": 90.9148,
+    "speedup": 1.3157
+  },
+  {
+    "model": "dinov3_vit",
+    "prune_method": "layer_drop_all",
+    "drop_num": 16,
+    "throughput": 673.7147,
+    "latency_ms": 189.9918,
+    "memory_gb": 0.963,
+    "flops_g": 82.1752,
+    "speedup": 1.48
+  },
+  {
+    "model": "dinov3_vit",
+    "prune_method": "layer_drop_all",
+    "drop_num": 20,
+    "throughput": 763.0056,
+    "latency_ms": 167.7579,
+    "memory_gb": 0.9083,
+    "flops_g": 70.4483,
+    "speedup": 1.6761
+  },
+  {
+    "model": "dinov3_vit",
+    "prune_method": "layer_drop_all",
+    "drop_num": 24,
+    "throughput": 890.467,
+    "latency_ms": 143.7452,
+    "memory_gb": 0.8692,
+    "flops_g": 61.7086,
+    "speedup": 1.9561
+  },
+  {
+    "model": "dinov3_vit",
+    "prune_method": "block_drop",
+    "drop_num": 2,
+    "throughput": 494.7605,
+    "latency_ms": 258.7114,
+    "memory_gb": 1.1038,
+    "flops_g": 112.8749,
+    "speedup": 1.0869
+  },
+  {
+    "model": "dinov3_vit",
+    "prune_method": "block_drop",
+    "drop_num": 4,
+    "throughput": 542.9264,
+    "latency_ms": 235.7598,
+    "memory_gb": 1.0569,
+    "flops_g": 102.6417,
+    "speedup": 1.1927
+  },
+  {
+    "model": "dinov3_vit",
+    "prune_method": "block_drop",
+    "drop_num": 6,
+    "throughput": 601.5404,
+    "latency_ms": 212.7874,
+    "memory_gb": 1.01,
+    "flops_g": 92.4084,
+    "speedup": 1.3214
+  },
+  {
+    "model": "dinov3_vit",
+    "prune_method": "block_drop",
+    "drop_num": 8,
+    "throughput": 675.0078,
+    "latency_ms": 189.6279,
+    "memory_gb": 0.963,
+    "flops_g": 82.1752,
+    "speedup": 1.4828
+  },
+  {
+    "model": "dinov3_vit",
+    "prune_method": "block_drop",
+    "drop_num": 12,
+    "throughput": 891.6375,
+    "latency_ms": 143.5564,
+    "memory_gb": 0.8692,
+    "flops_g": 61.7086,
+    "speedup": 1.9587
+  },
+  {
+    "model": "dinov3_vit",
+    "prune_method": "block_drop",
+    "drop_num": 16,
+    "throughput": 1311.3695,
+    "latency_ms": 97.6082,
+    "memory_gb": 0.7753,
+    "flops_g": 41.2421,
+    "speedup": 2.8808
+  },
+  {
+    "model": "dinov3_vit",
+    "prune_method": "block_drop",
+    "drop_num": 20,
+    "throughput": 2473.1014,
+    "latency_ms": 51.757,
+    "memory_gb": 0.6815,
+    "flops_g": 20.7756,
+    "speedup": 5.4328
+  },
+  {
+    "model": "dinov3_vit",
+    "prune_method": "block_drop",
+    "drop_num": 24,
+    "throughput": 21621.8609,
+    "latency_ms": 5.9203,
+    "memory_gb": 0.1437,
+    "flops_g": 0.3091,
+    "speedup": 47.4978
+  },
+  {
+    "model": "swinv2",
+    "prune_method": "baseline",
+    "drop_num": 0,
+    "throughput": 428.99,
+    "latency_ms": 298.3769,
+    "memory_gb": 3.4822,
+    "flops_g": 41.6599,
+    "speedup": 1.0
+  },
+  {
+    "model": "swinv2",
+    "prune_method": "layer_drop_attn",
+    "drop_num": 2,
+    "throughput": 449.2952,
+    "latency_ms": 284.8912,
+    "memory_gb": 3.4773,
+    "flops_g": 40.3177,
+    "speedup": 1.0473
+  },
+  {
+    "model": "swinv2",
+    "prune_method": "layer_drop_attn",
+    "drop_num": 4,
+    "throughput": 464.5233,
+    "latency_ms": 275.5515,
+    "memory_gb": 3.4669,
+    "flops_g": 39.6466,
+    "speedup": 1.0828
+  },
+  {
+    "model": "swinv2",
+    "prune_method": "layer_drop_attn",
+    "drop_num": 6,
+    "throughput": 490.1662,
+    "latency_ms": 261.1361,
+    "memory_gb": 3.462,
+    "flops_g": 38.3044,
+    "speedup": 1.1426
+  },
+  {
+    "model": "swinv2",
+    "prune_method": "layer_drop_attn",
+    "drop_num": 8,
+    "throughput": 518.5497,
+    "latency_ms": 246.8425,
+    "memory_gb": 3.457,
+    "flops_g": 36.9623,
+    "speedup": 1.2088
+  },
+  {
+    "model": "swinv2",
+    "prune_method": "layer_drop_attn",
+    "drop_num": 12,
+    "throughput": 573.9168,
+    "latency_ms": 223.0292,
+    "memory_gb": 3.4417,
+    "flops_g": 34.949,
+    "speedup": 1.3378
+  },
+  {
+    "model": "swinv2",
+    "prune_method": "layer_drop_attn",
+    "drop_num": 16,
+    "throughput": 658.5872,
+    "latency_ms": 194.3557,
+    "memory_gb": 3.4319,
+    "flops_g": 32.2646,
+    "speedup": 1.5352
+  },
+  {
+    "model": "swinv2",
+    "prune_method": "layer_drop_attn",
+    "drop_num": 20,
+    "throughput": 831.6144,
+    "latency_ms": 153.9176,
+    "memory_gb": 3.4235,
+    "flops_g": 29.4461,
+    "speedup": 1.9385
+  },
+  {
+    "model": "swinv2",
+    "prune_method": "layer_drop_attn",
+    "drop_num": 24,
+    "throughput": 1883.8546,
+    "latency_ms": 67.9459,
+    "memory_gb": 1.4163,
+    "flops_g": 25.8222,
+    "speedup": 4.3914
+  },
+  {
+    "model": "swinv2",
+    "prune_method": "layer_drop_mlp",
+    "drop_num": 2,
+    "throughput": 435.0487,
+    "latency_ms": 294.2203,
+    "memory_gb": 3.4744,
+    "flops_g": 39.5124,
+    "speedup": 1.0141
+  },
+  {
+    "model": "swinv2",
+    "prune_method": "layer_drop_mlp",
+    "drop_num": 4,
+    "throughput": 440.2862,
+    "latency_ms": 290.7207,
+    "memory_gb": 3.4665,
+    "flops_g": 37.3649,
+    "speedup": 1.0263
+  },
+  {
+    "model": "swinv2",
+    "prune_method": "layer_drop_mlp",
+    "drop_num": 6,
+    "throughput": 445.0126,
+    "latency_ms": 287.6332,
+    "memory_gb": 3.447,
+    "flops_g": 35.2174,
+    "speedup": 1.0373
+  },
+  {
+    "model": "swinv2",
+    "prune_method": "layer_drop_mlp",
+    "drop_num": 8,
+    "throughput": 450.6514,
+    "latency_ms": 284.0342,
+    "memory_gb": 3.4391,
+    "flops_g": 33.0699,
+    "speedup": 1.0505
+  },
+  {
+    "model": "swinv2",
+    "prune_method": "layer_drop_mlp",
+    "drop_num": 12,
+    "throughput": 464.4611,
+    "latency_ms": 275.5885,
+    "memory_gb": 3.4235,
+    "flops_g": 28.775,
+    "speedup": 1.0827
+  },
+  {
+    "model": "swinv2",
+    "prune_method": "layer_drop_mlp",
+    "drop_num": 16,
+    "throughput": 480.0606,
+    "latency_ms": 266.6331,
+    "memory_gb": 3.3962,
+    "flops_g": 24.48,
+    "speedup": 1.119
+  },
+  {
+    "model": "swinv2",
+    "prune_method": "layer_drop_mlp",
+    "drop_num": 24,
+    "throughput": 536.9293,
+    "latency_ms": 238.3928,
+    "memory_gb": 3.378,
+    "flops_g": 15.8901,
+    "speedup": 1.2516
+  },
+  {
+    "model": "swinv2",
+    "prune_method": "layer_drop_all",
+    "drop_num": 2,
+    "throughput": 447.2391,
+    "latency_ms": 286.2007,
+    "memory_gb": 3.4773,
+    "flops_g": 40.3177,
+    "speedup": 1.0425
+  },
+  {
+    "model": "swinv2",
+    "prune_method": "layer_drop_all",
+    "drop_num": 4,
+    "throughput": 463.3005,
+    "latency_ms": 276.2787,
+    "memory_gb": 3.4669,
+    "flops_g": 39.6466,
+    "speedup": 1.08
+  },
+  {
+    "model": "swinv2",
+    "prune_method": "layer_drop_all",
+    "drop_num": 6,
+    "throughput": 489.2624,
+    "latency_ms": 261.6185,
+    "memory_gb": 3.462,
+    "flops_g": 38.3044,
+    "speedup": 1.1405
+  },
+  {
+    "model": "swinv2",
+    "prune_method": "layer_drop_all",
+    "drop_num": 8,
+    "throughput": 517.6052,
+    "latency_ms": 247.2931,
+    "memory_gb": 3.457,
+    "flops_g": 36.9623,
+    "speedup": 1.2066
+  },
+  {
+    "model": "swinv2",
+    "prune_method": "layer_drop_all",
+    "drop_num": 12,
+    "throughput": 548.529,
+    "latency_ms": 233.3516,
+    "memory_gb": 3.4428,
+    "flops_g": 33.0699,
+    "speedup": 1.2787
+  },
+  {
+    "model": "swinv2",
+    "prune_method": "layer_drop_all",
+    "drop_num": 16,
+    "throughput": 582.0974,
+    "latency_ms": 219.8946,
+    "memory_gb": 3.4169,
+    "flops_g": 29.1776,
+    "speedup": 1.3569
+  },
+  {
+    "model": "swinv2",
+    "prune_method": "layer_drop_all",
+    "drop_num": 20,
+    "throughput": 620.8175,
+    "latency_ms": 206.18,
+    "memory_gb": 3.3987,
+    "flops_g": 26.3591,
+    "speedup": 1.4472
+  },
+  {
+    "model": "swinv2",
+    "prune_method": "layer_drop_all",
+    "drop_num": 24,
+    "throughput": 665.4445,
+    "latency_ms": 192.3528,
+    "memory_gb": 3.3845,
+    "flops_g": 22.4667,
+    "speedup": 1.5512
+  },
+  {
+    "model": "swinv2",
+    "prune_method": "block_drop",
+    "drop_num": 2,
+    "throughput": 456.8975,
+    "latency_ms": 280.1506,
+    "memory_gb": 3.4694,
+    "flops_g": 38.1702,
+    "speedup": 1.0651
+  },
+  {
+    "model": "swinv2",
+    "prune_method": "block_drop",
+    "drop_num": 4,
+    "throughput": 489.4633,
+    "latency_ms": 261.5112,
+    "memory_gb": 3.4566,
+    "flops_g": 34.6806,
+    "speedup": 1.141
+  },
+  {
+    "model": "swinv2",
+    "prune_method": "block_drop",
+    "drop_num": 6,
+    "throughput": 527.1283,
+    "latency_ms": 242.8255,
+    "memory_gb": 3.4439,
+    "flops_g": 31.1909,
+    "speedup": 1.2288
+  },
+  {
+    "model": "swinv2",
+    "prune_method": "block_drop",
+    "drop_num": 8,
+    "throughput": 570.0408,
+    "latency_ms": 224.5457,
+    "memory_gb": 3.4312,
+    "flops_g": 27.7012,
+    "speedup": 1.3288
+  },
+  {
+    "model": "swinv2",
+    "prune_method": "block_drop",
+    "drop_num": 12,
+    "throughput": 645.3703,
+    "latency_ms": 198.336,
+    "memory_gb": 3.3713,
+    "flops_g": 22.0641,
+    "speedup": 1.5044
+  },
+  {
+    "model": "swinv2",
+    "prune_method": "block_drop",
+    "drop_num": 16,
+    "throughput": 794.082,
+    "latency_ms": 161.1928,
+    "memory_gb": 3.3458,
+    "flops_g": 15.0848,
+    "speedup": 1.8511
+  },
+  {
+    "model": "swinv2",
+    "prune_method": "block_drop",
+    "drop_num": 20,
+    "throughput": 1032.3885,
+    "latency_ms": 123.9846,
+    "memory_gb": 3.3202,
+    "flops_g": 8.1054,
+    "speedup": 2.4066
+  },
+  {
+    "model": "swinv2",
+    "prune_method": "block_drop",
+    "drop_num": 24,
+    "throughput": 20064.5428,
+    "latency_ms": 6.3796,
+    "memory_gb": 0.441,
+    "flops_g": 0.0524,
+    "speedup": 46.7716
+  },
+  {
+    "model": "vit",
+    "prune_method": "baseline",
+    "drop_num": 0,
+    "throughput": 1912.9009,
+    "latency_ms": 66.9145,
+    "memory_gb": 0.7179,
+    "flops_g": 35.4287,
+    "speedup": 1.0
+  },
+  {
+    "model": "vit",
+    "prune_method": "layer_drop_attn",
+    "drop_num": 2,
+    "throughput": 2032.4022,
+    "latency_ms": 62.9801,
+    "memory_gb": 0.708,
+    "flops_g": 33.3311,
+    "speedup": 1.0625
+  },
+  {
+    "model": "vit",
+    "prune_method": "layer_drop_attn",
+    "drop_num": 4,
+    "throughput": 2160.1564,
+    "latency_ms": 59.2556,
+    "memory_gb": 0.6992,
+    "flops_g": 31.2336,
+    "speedup": 1.1293
+  },
+  {
+    "model": "vit",
+    "prune_method": "layer_drop_attn",
+    "drop_num": 6,
+    "throughput": 2313.8952,
+    "latency_ms": 55.3181,
+    "memory_gb": 0.6892,
+    "flops_g": 29.136,
+    "speedup": 1.2096
+  },
+  {
+    "model": "vit",
+    "prune_method": "layer_drop_attn",
+    "drop_num": 8,
+    "throughput": 2493.8913,
+    "latency_ms": 51.326,
+    "memory_gb": 0.6804,
+    "flops_g": 27.0384,
+    "speedup": 1.3037
+  },
+  {
+    "model": "vit",
+    "prune_method": "layer_drop_attn",
+    "drop_num": 12,
+    "throughput": 2983.2661,
+    "latency_ms": 42.9063,
+    "memory_gb": 0.5511,
+    "flops_g": 22.8433,
+    "speedup": 1.5596
+  },
+  {
+    "model": "vit",
+    "prune_method": "layer_drop_mlp",
+    "drop_num": 2,
+    "throughput": 2083.504,
+    "latency_ms": 61.4356,
+    "memory_gb": 0.6992,
+    "flops_g": 31.7105,
+    "speedup": 1.0892
+  },
+  {
+    "model": "vit",
+    "prune_method": "layer_drop_mlp",
+    "drop_num": 4,
+    "throughput": 2322.2171,
+    "latency_ms": 55.1199,
+    "memory_gb": 0.6807,
+    "flops_g": 27.9922,
+    "speedup": 1.214
+  },
+  {
+    "model": "vit",
+    "prune_method": "layer_drop_mlp",
+    "drop_num": 6,
+    "throughput": 2632.742,
+    "latency_ms": 48.6191,
+    "memory_gb": 0.6623,
+    "flops_g": 24.274,
+    "speedup": 1.3763
+  },
+  {
+    "model": "vit",
+    "prune_method": "layer_drop_mlp",
+    "drop_num": 8,
+    "throughput": 3033.0755,
+    "latency_ms": 42.2015,
+    "memory_gb": 0.6438,
+    "flops_g": 20.5557,
+    "speedup": 1.5856
+  },
+  {
+    "model": "vit",
+    "prune_method": "layer_drop_mlp",
+    "drop_num": 12,
+    "throughput": 4345.8138,
+    "latency_ms": 29.4538,
+    "memory_gb": 0.3552,
+    "flops_g": 13.1192,
+    "speedup": 2.2718
+  },
+  {
+    "model": "vit",
+    "prune_method": "layer_drop_all",
+    "drop_num": 2,
+    "throughput": 2083.8755,
+    "latency_ms": 61.4243,
+    "memory_gb": 0.6992,
+    "flops_g": 31.7105,
+    "speedup": 1.0894
+  },
+  {
+    "model": "vit",
+    "prune_method": "layer_drop_all",
+    "drop_num": 4,
+    "throughput": 2320.6322,
+    "latency_ms": 55.1576,
+    "memory_gb": 0.6807,
+    "flops_g": 27.9922,
+    "speedup": 1.2131
+  },
+  {
+    "model": "vit",
+    "prune_method": "layer_drop_all",
+    "drop_num": 6,
+    "throughput": 2630.5256,
+    "latency_ms": 48.66,
+    "memory_gb": 0.6623,
+    "flops_g": 24.274,
+    "speedup": 1.3751
+  },
+  {
+    "model": "vit",
+    "prune_method": "layer_drop_all",
+    "drop_num": 8,
+    "throughput": 3034.2194,
+    "latency_ms": 42.1856,
+    "memory_gb": 0.6438,
+    "flops_g": 20.5557,
+    "speedup": 1.5862
+  },
+  {
+    "model": "vit",
+    "prune_method": "layer_drop_all",
+    "drop_num": 12,
+    "throughput": 4044.4627,
+    "latency_ms": 31.6482,
+    "memory_gb": 0.6166,
+    "flops_g": 14.7399,
+    "speedup": 2.1143
+  },
+  {
+    "model": "vit",
+    "prune_method": "block_drop",
+    "drop_num": 2,
+    "throughput": 2233.9719,
+    "latency_ms": 57.2975,
+    "memory_gb": 0.6895,
+    "flops_g": 29.6129,
+    "speedup": 1.1678
+  },
+  {
+    "model": "vit",
+    "prune_method": "block_drop",
+    "drop_num": 4,
+    "throughput": 2741.7667,
+    "latency_ms": 46.6855,
+    "memory_gb": 0.6623,
+    "flops_g": 23.7971,
+    "speedup": 1.4333
+  },
+  {
+    "model": "vit",
+    "prune_method": "block_drop",
+    "drop_num": 6,
+    "throughput": 3541.7892,
+    "latency_ms": 36.1401,
+    "memory_gb": 0.6342,
+    "flops_g": 17.9813,
+    "speedup": 1.8515
+  },
+  {
+    "model": "vit",
+    "prune_method": "block_drop",
+    "drop_num": 8,
+    "throughput": 5014.4811,
+    "latency_ms": 25.5262,
+    "memory_gb": 0.6069,
+    "flops_g": 12.1654,
+    "speedup": 2.6214
+  },
+  {
+    "model": "vit",
+    "prune_method": "block_drop",
+    "drop_num": 12,
+    "throughput": 28145.0447,
+    "latency_ms": 4.5479,
+    "memory_gb": 0.1192,
+    "flops_g": 0.5338,
+    "speedup": 14.7133
+  },
+  {
+    "model": "deit",
+    "prune_method": "baseline",
+    "drop_num": 0,
+    "throughput": 1931.9636,
+    "latency_ms": 66.2541,
+    "memory_gb": 0.7179,
+    "flops_g": 35.4287,
+    "speedup": 1.0
+  },
+  {
+    "model": "deit",
+    "prune_method": "layer_drop_attn",
+    "drop_num": 1,
+    "throughput": 1985.9913,
+    "latency_ms": 64.4518,
+    "memory_gb": 0.7124,
+    "flops_g": 34.3799,
+    "speedup": 1.028
+  },
+  {
+    "model": "deit",
+    "prune_method": "layer_drop_attn",
+    "drop_num": 2,
+    "throughput": 2044.2362,
+    "latency_ms": 62.6153,
+    "memory_gb": 0.708,
+    "flops_g": 33.3311,
+    "speedup": 1.0581
+  },
+  {
+    "model": "deit",
+    "prune_method": "layer_drop_attn",
+    "drop_num": 3,
+    "throughput": 2108.2858,
+    "latency_ms": 60.7132,
+    "memory_gb": 0.7036,
+    "flops_g": 32.2824,
+    "speedup": 1.0913
+  },
+  {
+    "model": "deit",
+    "prune_method": "layer_drop_attn",
+    "drop_num": 4,
+    "throughput": 2180.2751,
+    "latency_ms": 58.7084,
+    "memory_gb": 0.6992,
+    "flops_g": 31.2336,
+    "speedup": 1.1285
+  },
+  {
+    "model": "deit",
+    "prune_method": "layer_drop_attn",
+    "drop_num": 5,
+    "throughput": 2259.4998,
+    "latency_ms": 56.65,
+    "memory_gb": 0.6939,
+    "flops_g": 30.1848,
+    "speedup": 1.1695
+  },
+  {
+    "model": "deit",
+    "prune_method": "layer_drop_attn",
+    "drop_num": 6,
+    "throughput": 2342.8853,
+    "latency_ms": 54.6338,
+    "memory_gb": 0.6892,
+    "flops_g": 29.136,
+    "speedup": 1.2127
+  },
+  {
+    "model": "deit",
+    "prune_method": "layer_drop_attn",
+    "drop_num": 7,
+    "throughput": 2433.8202,
+    "latency_ms": 52.5925,
+    "memory_gb": 0.6848,
+    "flops_g": 28.0872,
+    "speedup": 1.2598
+  },
+  {
+    "model": "deit",
+    "prune_method": "layer_drop_attn",
+    "drop_num": 8,
+    "throughput": 2533.0403,
+    "latency_ms": 50.5323,
+    "memory_gb": 0.6804,
+    "flops_g": 27.0384,
+    "speedup": 1.3111
+  },
+  {
+    "model": "deit",
+    "prune_method": "layer_drop_attn",
+    "drop_num": 9,
+    "throughput": 2638.4683,
+    "latency_ms": 48.5132,
+    "memory_gb": 0.676,
+    "flops_g": 25.9897,
+    "speedup": 1.3657
+  },
+  {
+    "model": "deit",
+    "prune_method": "layer_drop_attn",
+    "drop_num": 10,
+    "throughput": 2758.815,
+    "latency_ms": 46.397,
+    "memory_gb": 0.6716,
+    "flops_g": 24.9409,
+    "speedup": 1.428
+  },
+  {
+    "model": "deit",
+    "prune_method": "layer_drop_attn",
+    "drop_num": 11,
+    "throughput": 2885.1906,
+    "latency_ms": 44.3647,
+    "memory_gb": 0.6277,
+    "flops_g": 23.8921,
+    "speedup": 1.4934
+  },
+  {
+    "model": "deit",
+    "prune_method": "layer_drop_attn",
+    "drop_num": 12,
+    "throughput": 3027.3006,
+    "latency_ms": 42.2821,
+    "memory_gb": 0.5511,
+    "flops_g": 22.8433,
+    "speedup": 1.567
+  },
+  {
+    "model": "deit",
+    "prune_method": "layer_drop_mlp",
+    "drop_num": 1,
+    "throughput": 2005.9128,
+    "latency_ms": 63.8117,
+    "memory_gb": 0.7088,
+    "flops_g": 33.5696,
+    "speedup": 1.0383
+  },
+  {
+    "model": "deit",
+    "prune_method": "layer_drop_mlp",
+    "drop_num": 2,
+    "throughput": 2110.0038,
+    "latency_ms": 60.6637,
+    "memory_gb": 0.6992,
+    "flops_g": 31.7105,
+    "speedup": 1.0922
+  },
+  {
+    "model": "deit",
+    "prune_method": "layer_drop_mlp",
+    "drop_num": 3,
+    "throughput": 2228.1502,
+    "latency_ms": 57.447,
+    "memory_gb": 0.6904,
+    "flops_g": 29.8513,
+    "speedup": 1.1533
+  },
+  {
+    "model": "deit",
+    "prune_method": "layer_drop_mlp",
+    "drop_num": 4,
+    "throughput": 2357.3934,
+    "latency_ms": 54.2975,
+    "memory_gb": 0.6807,
+    "flops_g": 27.9922,
+    "speedup": 1.2202
+  },
+  {
+    "model": "deit",
+    "prune_method": "layer_drop_mlp",
+    "drop_num": 5,
+    "throughput": 2502.6407,
+    "latency_ms": 51.1462,
+    "memory_gb": 0.6719,
+    "flops_g": 26.1331,
+    "speedup": 1.2954
+  },
+  {
+    "model": "deit",
+    "prune_method": "layer_drop_mlp",
+    "drop_num": 6,
+    "throughput": 2668.4757,
+    "latency_ms": 47.9676,
+    "memory_gb": 0.6623,
+    "flops_g": 24.274,
+    "speedup": 1.3812
+  },
+  {
+    "model": "deit",
+    "prune_method": "layer_drop_mlp",
+    "drop_num": 7,
+    "throughput": 2857.4271,
+    "latency_ms": 44.7957,
+    "memory_gb": 0.6535,
+    "flops_g": 22.4148,
+    "speedup": 1.479
+  },
+  {
+    "model": "deit",
+    "prune_method": "layer_drop_mlp",
+    "drop_num": 8,
+    "throughput": 3078.006,
+    "latency_ms": 41.5855,
+    "memory_gb": 0.6438,
+    "flops_g": 20.5557,
+    "speedup": 1.5932
+  },
+  {
+    "model": "deit",
+    "prune_method": "layer_drop_mlp",
+    "drop_num": 9,
+    "throughput": 3336.2049,
+    "latency_ms": 38.3671,
+    "memory_gb": 0.635,
+    "flops_g": 18.6966,
+    "speedup": 1.7268
+  },
+  {
+    "model": "deit",
+    "prune_method": "layer_drop_mlp",
+    "drop_num": 10,
+    "throughput": 3637.652,
+    "latency_ms": 35.1877,
+    "memory_gb": 0.6254,
+    "flops_g": 16.8375,
+    "speedup": 1.8829
+  },
+  {
+    "model": "deit",
+    "prune_method": "layer_drop_mlp",
+    "drop_num": 11,
+    "throughput": 3993.6859,
+    "latency_ms": 32.0508,
+    "memory_gb": 0.5805,
+    "flops_g": 14.9783,
+    "speedup": 2.0672
+  },
+  {
+    "model": "deit",
+    "prune_method": "layer_drop_mlp",
+    "drop_num": 12,
+    "throughput": 4435.3333,
+    "latency_ms": 28.8593,
+    "memory_gb": 0.3552,
+    "flops_g": 13.1192,
+    "speedup": 2.2958
+  },
+  {
+    "model": "deit",
+    "prune_method": "layer_drop_all",
+    "drop_num": 1,
+    "throughput": 2008.943,
+    "latency_ms": 63.7155,
+    "memory_gb": 0.7088,
+    "flops_g": 33.5696,
+    "speedup": 1.0398
+  },
+  {
+    "model": "deit",
+    "prune_method": "layer_drop_all",
+    "drop_num": 2,
+    "throughput": 2111.0773,
+    "latency_ms": 60.6328,
+    "memory_gb": 0.6992,
+    "flops_g": 31.7105,
+    "speedup": 1.0927
+  },
+  {
+    "model": "deit",
+    "prune_method": "layer_drop_all",
+    "drop_num": 3,
+    "throughput": 2229.0097,
+    "latency_ms": 57.4248,
+    "memory_gb": 0.6904,
+    "flops_g": 29.8513,
+    "speedup": 1.1538
+  },
+  {
+    "model": "deit",
+    "prune_method": "layer_drop_all",
+    "drop_num": 4,
+    "throughput": 2357.7427,
+    "latency_ms": 54.2895,
+    "memory_gb": 0.6807,
+    "flops_g": 27.9922,
+    "speedup": 1.2204
+  },
+  {
+    "model": "deit",
+    "prune_method": "layer_drop_all",
+    "drop_num": 5,
+    "throughput": 2503.673,
+    "latency_ms": 51.1251,
+    "memory_gb": 0.6719,
+    "flops_g": 26.1331,
+    "speedup": 1.2959
+  },
+  {
+    "model": "deit",
+    "prune_method": "layer_drop_all",
+    "drop_num": 6,
+    "throughput": 2668.6651,
+    "latency_ms": 47.9643,
+    "memory_gb": 0.6623,
+    "flops_g": 24.274,
+    "speedup": 1.3813
+  },
+  {
+    "model": "deit",
+    "prune_method": "layer_drop_all",
+    "drop_num": 7,
+    "throughput": 2857.6753,
+    "latency_ms": 44.7918,
+    "memory_gb": 0.6535,
+    "flops_g": 22.4148,
+    "speedup": 1.4792
+  },
+  {
+    "model": "deit",
+    "prune_method": "layer_drop_all",
+    "drop_num": 8,
+    "throughput": 3078.3348,
+    "latency_ms": 41.581,
+    "memory_gb": 0.6438,
+    "flops_g": 20.5557,
+    "speedup": 1.5934
+  },
+  {
+    "model": "deit",
+    "prune_method": "layer_drop_all",
+    "drop_num": 9,
+    "throughput": 3336.6023,
+    "latency_ms": 38.3625,
+    "memory_gb": 0.635,
+    "flops_g": 18.6966,
+    "speedup": 1.7271
+  },
+  {
+    "model": "deit",
+    "prune_method": "layer_drop_all",
+    "drop_num": 10,
+    "throughput": 3639.4176,
+    "latency_ms": 35.1705,
+    "memory_gb": 0.6254,
+    "flops_g": 16.8375,
+    "speedup": 1.8838
+  },
+  {
+    "model": "deit",
+    "prune_method": "layer_drop_all",
+    "drop_num": 11,
+    "throughput": 3993.9119,
+    "latency_ms": 32.0489,
+    "memory_gb": 0.5805,
+    "flops_g": 14.9783,
+    "speedup": 2.0673
+  },
+  {
+    "model": "deit",
+    "prune_method": "layer_drop_all",
+    "drop_num": 12,
+    "throughput": 4270.0467,
+    "latency_ms": 29.9763,
+    "memory_gb": 0.5761,
+    "flops_g": 13.9296,
+    "speedup": 2.2102
+  },
+  {
+    "model": "deit",
+    "prune_method": "layer_drop_all",
+    "drop_num": 16,
+    "throughput": 5852.9012,
+    "latency_ms": 21.8696,
+    "memory_gb": 0.5576,
+    "flops_g": 9.7344,
+    "speedup": 3.0295
+  },
+  {
+    "model": "deit",
+    "prune_method": "layer_drop_all",
+    "drop_num": 20,
+    "throughput": 9389.6109,
+    "latency_ms": 13.6322,
+    "memory_gb": 0.5392,
+    "flops_g": 5.5393,
+    "speedup": 4.8601
+  },
+  {
+    "model": "deit",
+    "prune_method": "block_drop",
+    "drop_num": 1,
+    "throughput": 2077.9926,
+    "latency_ms": 61.5981,
+    "memory_gb": 0.7036,
+    "flops_g": 32.5208,
+    "speedup": 1.0756
+  },
+  {
+    "model": "deit",
+    "prune_method": "block_drop",
+    "drop_num": 2,
+    "throughput": 2269.0991,
+    "latency_ms": 56.4102,
+    "memory_gb": 0.6895,
+    "flops_g": 29.6129,
+    "speedup": 1.1745
+  },
+  {
+    "model": "deit",
+    "prune_method": "block_drop",
+    "drop_num": 3,
+    "throughput": 2498.4172,
+    "latency_ms": 51.2326,
+    "memory_gb": 0.676,
+    "flops_g": 26.705,
+    "speedup": 1.2932
+  },
+  {
+    "model": "deit",
+    "prune_method": "block_drop",
+    "drop_num": 4,
+    "throughput": 2780.9169,
+    "latency_ms": 46.0282,
+    "memory_gb": 0.6623,
+    "flops_g": 23.7971,
+    "speedup": 1.4394
+  },
+  {
+    "model": "deit",
+    "prune_method": "block_drop",
+    "drop_num": 5,
+    "throughput": 3135.2018,
+    "latency_ms": 40.8269,
+    "memory_gb": 0.6491,
+    "flops_g": 20.8892,
+    "speedup": 1.6228
+  },
+  {
+    "model": "deit",
+    "prune_method": "block_drop",
+    "drop_num": 6,
+    "throughput": 3592.8117,
+    "latency_ms": 35.6269,
+    "memory_gb": 0.6342,
+    "flops_g": 17.9813,
+    "speedup": 1.8597
+  },
+  {
+    "model": "deit",
+    "prune_method": "block_drop",
+    "drop_num": 7,
+    "throughput": 4208.2169,
+    "latency_ms": 30.4168,
+    "memory_gb": 0.6209,
+    "flops_g": 15.0733,
+    "speedup": 2.1782
+  },
+  {
+    "model": "deit",
+    "prune_method": "block_drop",
+    "drop_num": 8,
+    "throughput": 5091.6395,
+    "latency_ms": 25.1393,
+    "memory_gb": 0.6069,
+    "flops_g": 12.1654,
+    "speedup": 2.6355
+  },
+  {
+    "model": "deit",
+    "prune_method": "block_drop",
+    "drop_num": 9,
+    "throughput": 6404.7861,
+    "latency_ms": 19.9851,
+    "memory_gb": 0.5934,
+    "flops_g": 9.2575,
+    "speedup": 3.3152
+  },
+  {
+    "model": "deit",
+    "prune_method": "block_drop",
+    "drop_num": 10,
+    "throughput": 8704.995,
+    "latency_ms": 14.7043,
+    "memory_gb": 0.5796,
+    "flops_g": 6.3496,
+    "speedup": 4.5058
+  },
+  {
+    "model": "deit",
+    "prune_method": "block_drop",
+    "drop_num": 11,
+    "throughput": 13423.4636,
+    "latency_ms": 9.5356,
+    "memory_gb": 0.5295,
+    "flops_g": 3.4417,
+    "speedup": 6.9481
+  },
+  {
+    "model": "deit",
+    "prune_method": "block_drop",
+    "drop_num": 12,
+    "throughput": 29344.3813,
+    "latency_ms": 4.3621,
+    "memory_gb": 0.1192,
+    "flops_g": 0.5338,
+    "speedup": 15.1889
+  }
+]

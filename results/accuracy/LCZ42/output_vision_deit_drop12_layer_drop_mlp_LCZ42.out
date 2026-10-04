@@ -1,0 +1,16 @@
+
+                RESULTS
+                Model: ./deit_model
+                Dataset: LCZ42
+                Dataset classes: 17
+                Model classes: 1000
+                Head fine-tuning: YES
+                Pruning method: layer_drop_mlp
+                Layers dropped: 12
+                Total samples: 24200
+                Accuracy: 0.3898 (38.98%)
+                Precision: 0.2488
+                Recall: 0.2216
+                F1 Score: 0.1901
+                ================================================================================
+                

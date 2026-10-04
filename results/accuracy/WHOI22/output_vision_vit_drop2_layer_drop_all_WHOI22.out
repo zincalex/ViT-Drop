@@ -1,0 +1,16 @@
+
+                RESULTS
+                Model: ./vit_model
+                Dataset: WHOI22
+                Dataset classes: 22
+                Model classes: 1000
+                Head fine-tuning: YES
+                Pruning method: layer_drop_all
+                Layers dropped: 2
+                Total samples: 3300
+                Accuracy: 0.8936 (89.36%)
+                Precision: 0.8969
+                Recall: 0.8936
+                F1 Score: 0.8942
+                ================================================================================
+                

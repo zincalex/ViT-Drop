@@ -1,0 +1,31 @@
+{
+  "model_name": "dinov3_vit_drop20_layer_drop_mlp",
+  "model_path": "./dinov3_vit_model_speed",
+  "gpu": "NVIDIA A40",
+  "image_size": 224,
+  "flops_g": 57.005953024,
+  "baseline_file": "./results/speed/per_model/dinov3_vit_original_speed.csv",
+  "baseline_flops_g": 123.108184064,
+  "idle_power_w": 87.125,
+  "num_runs": 5,
+  "num_iterations": 100,
+  "timestamp": "2026-10-03T23:16:31",
+  "results": [
+    {
+      "Batch Size": 128,
+      "Latency (ms)": 174.9568486213684,
+      "Latency Std (ms)": 0.24066202894986383,
+      "Throughput (imgs/s)": 731.610357112687,
+      "Throughput Std (imgs/s)": 1.0076346199767712,
+      "Memory (GB)": 0.8379311561584473,
+      "Memory (%)": 1.8862200569493295,
+      "Power (W)": 299.3910714285714,
+      "Net Power (W)": 212.26607142857142,
+      "Energy/Image (J)": 0.29013541069358717,
+      "FLOPs (G)": 57.005953024,
+      "Speedup": 1.607164847626797,
+      "FLOPs Remained (%)": 46.305575423291465,
+      "Conversion Efficiency": 0.7442069306944539
+    }
+  ]
+}

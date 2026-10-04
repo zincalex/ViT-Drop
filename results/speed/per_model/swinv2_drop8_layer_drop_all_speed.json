@@ -1,0 +1,31 @@
+{
+  "model_name": "swinv2_drop8_layer_drop_all",
+  "model_path": "./swinv2_model_speed",
+  "gpu": "NVIDIA A40",
+  "image_size": 256,
+  "flops_g": 36.962254848,
+  "baseline_file": "./results/speed/per_model/swinv2_original_speed.csv",
+  "baseline_flops_g": 41.659875328,
+  "idle_power_w": 83.25444444444445,
+  "num_runs": 5,
+  "num_iterations": 100,
+  "timestamp": "2026-09-02T01:20:00",
+  "results": [
+    {
+      "Batch Size": 128,
+      "Latency (ms)": 247.29307079315186,
+      "Latency Std (ms)": 0.296093009684033,
+      "Throughput (imgs/s)": 517.6052173188979,
+      "Throughput Std (imgs/s)": 0.620242382333347,
+      "Memory (GB)": 3.4570417404174805,
+      "Memory (%)": 7.782402792395693,
+      "Power (W)": 298.9785192697768,
+      "Net Power (W)": 215.72407482533237,
+      "Energy/Image (J)": 0.41677337787038615,
+      "FLOPs (G)": 36.962254848,
+      "Speedup": 1.2065670535374535,
+      "FLOPs Remained (%)": 88.72387292805296,
+      "Conversion Efficiency": 1.070513019372323
+    }
+  ]
+}

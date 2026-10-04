@@ -1,0 +1,16 @@
+
+                RESULTS
+                Model: ./dinov2_model
+                Dataset: Kaggle38
+                Dataset classes: 38
+                Model classes: 1000
+                Head fine-tuning: YES
+                Pruning method: layer_drop_mlp
+                Layers dropped: 6
+                Total samples: 2880
+                Accuracy: 0.9222 (92.22%)
+                Precision: 0.8997
+                Recall: 0.8855
+                F1 Score: 0.8890
+                ================================================================================
+                

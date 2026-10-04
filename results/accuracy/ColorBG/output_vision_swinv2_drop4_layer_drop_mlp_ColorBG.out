@@ -1,0 +1,16 @@
+
+                RESULTS
+                Model: ./swinv2_model
+                Dataset: ColorBG
+                Dataset classes: 3
+                Model classes: 1000
+                Head fine-tuning: YES
+                Pruning method: layer_drop_mlp
+                Layers dropped: 4
+                Total samples: 60
+                Accuracy: 0.7667 (76.67%)
+                Precision: 0.8210
+                Recall: 0.8032
+                F1 Score: 0.7682
+                ================================================================================
+                

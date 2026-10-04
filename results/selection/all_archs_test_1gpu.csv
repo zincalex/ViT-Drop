@@ -1,0 +1,6 @@
+dataset,dinov2_acc,dinov2_method,dinov2_drop,dinov3_vit_acc,dinov3_vit_method,dinov3_vit_drop,swinv2_acc,swinv2_method,swinv2_drop,vit_acc,vit_method,vit_drop
+ColorBG,96.67,layer_drop_all,40,90.00,block_drop,12,98.33,block_drop,4,95.00,layer_drop_mlp,4
+InfLarynge,96.25,layer_drop_all,40,95.00,layer_drop_all,20,96.25,layer_drop_all,24,95.42,layer_drop_mlp,4
+lar,99.24,layer_drop_all,24,97.35,block_drop,0,98.48,layer_drop_mlp,8,95.45,block_drop,4
+Pest,97.24,layer_drop_all,16,97.51,block_drop,0,93.37,layer_drop_mlp,8,95.86,block_drop,0
+zoolake,96.06,layer_drop_mlp,8,95.62,block_drop,0,94.17,layer_drop_mlp,4,93.68,layer_drop_mlp,4

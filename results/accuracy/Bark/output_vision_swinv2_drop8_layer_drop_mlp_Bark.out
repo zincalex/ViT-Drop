@@ -1,0 +1,16 @@
+
+                RESULTS
+                Model: ./swinv2_model
+                Dataset: Bark
+                Dataset classes: 23
+                Model classes: 1000
+                Head fine-tuning: YES
+                Pruning method: layer_drop_mlp
+                Layers dropped: 8
+                Total samples: 4940
+                Accuracy: 0.8395 (83.95%)
+                Precision: 0.8234
+                Recall: 0.8176
+                F1 Score: 0.8003
+                ================================================================================
+                

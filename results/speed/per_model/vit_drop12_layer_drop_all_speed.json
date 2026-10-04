@@ -1,0 +1,31 @@
+{
+  "model_name": "vit_drop12_layer_drop_all",
+  "model_path": "./vit_model_speed",
+  "gpu": "NVIDIA A40",
+  "image_size": 224,
+  "flops_g": 14.739892224,
+  "baseline_file": "./results/speed/per_model/vit_original_speed.csv",
+  "baseline_flops_g": 35.428712448,
+  "idle_power_w": 86.14111111111112,
+  "num_runs": 5,
+  "num_iterations": 100,
+  "timestamp": "2026-10-03T23:57:01",
+  "results": [
+    {
+      "Batch Size": 128,
+      "Latency (ms)": 31.648231983184814,
+      "Latency Std (ms)": 0.026946824975648636,
+      "Throughput (imgs/s)": 4044.4626696092905,
+      "Throughput Std (imgs/s)": 3.444381596901426,
+      "Memory (GB)": 0.6165661811828613,
+      "Memory (%)": 1.3879177171493735,
+      "Power (W)": 291.92415384615384,
+      "Net Power (W)": 205.78304273504273,
+      "Energy/Image (J)": 0.050880193376818116,
+      "FLOPs (G)": 14.739892224,
+      "Speedup": 2.1143085656579985,
+      "FLOPs Remained (%)": 41.60436890173266,
+      "Conversion Efficiency": 0.8796447353772863
+    }
+  ]
+}

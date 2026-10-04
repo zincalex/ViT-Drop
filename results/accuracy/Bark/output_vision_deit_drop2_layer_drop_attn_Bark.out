@@ -1,0 +1,16 @@
+
+                RESULTS
+                Model: ./deit_model
+                Dataset: Bark
+                Dataset classes: 23
+                Model classes: 1000
+                Head fine-tuning: YES
+                Pruning method: layer_drop_attn
+                Layers dropped: 2
+                Total samples: 4940
+                Accuracy: 0.8255 (82.55%)
+                Precision: 0.7830
+                Recall: 0.7659
+                F1 Score: 0.7511
+                ================================================================================
+                

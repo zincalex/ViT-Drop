@@ -1,0 +1,16 @@
+
+                RESULTS
+                Model: ./vit_model
+                Dataset: InfLarynge
+                Dataset classes: 4
+                Model classes: 1000
+                Head fine-tuning: YES
+                Pruning method: block_drop
+                Layers dropped: 0
+                Total samples: 240
+                Accuracy: 0.8833 (88.33%)
+                Precision: 0.8928
+                Recall: 0.8833
+                F1 Score: 0.8818
+                ================================================================================
+                

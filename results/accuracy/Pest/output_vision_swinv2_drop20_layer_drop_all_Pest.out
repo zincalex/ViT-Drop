@@ -1,0 +1,16 @@
+
+                RESULTS
+                Model: ./swinv2_model
+                Dataset: Pest
+                Dataset classes: 10
+                Model classes: 1000
+                Head fine-tuning: YES
+                Pruning method: layer_drop_all
+                Layers dropped: 20
+                Total samples: 380
+                Accuracy: 0.6974 (69.74%)
+                Precision: 0.7322
+                Recall: 0.6900
+                F1 Score: 0.6663
+                ================================================================================
+                

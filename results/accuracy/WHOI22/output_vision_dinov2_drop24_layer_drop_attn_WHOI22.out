@@ -1,0 +1,16 @@
+
+                RESULTS
+                Model: ./dinov2_model
+                Dataset: WHOI22
+                Dataset classes: 22
+                Model classes: 1000
+                Head fine-tuning: YES
+                Pruning method: layer_drop_attn
+                Layers dropped: 24
+                Total samples: 3300
+                Accuracy: 0.8203 (82.03%)
+                Precision: 0.8454
+                Recall: 0.8201
+                F1 Score: 0.8194
+                ================================================================================
+                

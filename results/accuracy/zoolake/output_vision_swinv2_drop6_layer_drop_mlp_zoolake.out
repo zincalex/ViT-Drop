@@ -1,0 +1,16 @@
+
+                RESULTS
+                Model: ./swinv2_model
+                Dataset: zoolake
+                Dataset classes: 35
+                Model classes: 1000
+                Head fine-tuning: YES
+                Pruning method: layer_drop_mlp
+                Layers dropped: 6
+                Total samples: 2700
+                Accuracy: 0.9230 (92.30%)
+                Precision: 0.8568
+                Recall: 0.7486
+                F1 Score: 0.7775
+                ================================================================================
+                

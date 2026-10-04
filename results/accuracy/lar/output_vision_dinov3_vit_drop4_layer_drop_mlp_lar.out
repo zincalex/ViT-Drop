@@ -1,0 +1,16 @@
+
+                RESULTS
+                Model: ./dinov3_vit_model
+                Dataset: lar
+                Dataset classes: 4
+                Model classes: 4
+                Head fine-tuning: YES
+                Pruning method: layer_drop_mlp
+                Layers dropped: 4
+                Total samples: 280
+                Accuracy: 0.9321 (93.21%)
+                Precision: 0.9306
+                Recall: 0.9317
+                F1 Score: 0.9311
+                ================================================================================
+                

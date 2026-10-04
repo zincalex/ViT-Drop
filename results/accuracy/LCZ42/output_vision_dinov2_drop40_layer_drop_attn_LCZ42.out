@@ -1,0 +1,16 @@
+
+                RESULTS
+                Model: ./dinov2_model
+                Dataset: LCZ42
+                Dataset classes: 17
+                Model classes: 1000
+                Head fine-tuning: YES
+                Pruning method: layer_drop_attn
+                Layers dropped: 40
+                Total samples: 24200
+                Accuracy: 0.4776 (47.76%)
+                Precision: 0.4009
+                Recall: 0.3233
+                F1 Score: 0.2931
+                ================================================================================
+                

@@ -1,0 +1,16 @@
+
+                RESULTS
+                Model: ./vit_model
+                Dataset: LCZ42
+                Dataset classes: 17
+                Model classes: 1000
+                Head fine-tuning: YES
+                Pruning method: layer_drop_mlp
+                Layers dropped: 4
+                Total samples: 24200
+                Accuracy: 0.4943 (49.43%)
+                Precision: 0.4479
+                Recall: 0.3151
+                F1 Score: 0.3044
+                ================================================================================
+                

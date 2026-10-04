@@ -1,0 +1,16 @@
+
+                RESULTS
+                Model: ./vit_model
+                Dataset: zoolake
+                Dataset classes: 35
+                Model classes: 1000
+                Head fine-tuning: YES
+                Pruning method: layer_drop_mlp
+                Layers dropped: 8
+                Total samples: 2700
+                Accuracy: 0.8715 (87.15%)
+                Precision: 0.6353
+                Recall: 0.5772
+                F1 Score: 0.5839
+                ================================================================================
+                

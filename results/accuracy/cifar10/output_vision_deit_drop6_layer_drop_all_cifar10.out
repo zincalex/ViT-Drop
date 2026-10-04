@@ -1,0 +1,16 @@
+
+                RESULTS
+                Model: ./deit_model
+                Dataset: cifar10
+                Dataset classes: 10
+                Model classes: 1000
+                Head fine-tuning: YES
+                Pruning method: layer_drop_all
+                Layers dropped: 6
+                Total samples: 10000
+                Accuracy: 0.9115 (91.15%)
+                Precision: 0.9115
+                Recall: 0.9115
+                F1 Score: 0.9114
+                ================================================================================
+                

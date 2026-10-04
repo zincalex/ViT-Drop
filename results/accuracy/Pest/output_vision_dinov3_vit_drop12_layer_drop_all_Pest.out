@@ -1,0 +1,16 @@
+
+                RESULTS
+                Model: ./dinov3_vit_model
+                Dataset: Pest
+                Dataset classes: 10
+                Model classes: 10
+                Head fine-tuning: YES
+                Pruning method: layer_drop_all
+                Layers dropped: 12
+                Total samples: 380
+                Accuracy: 0.5132 (51.32%)
+                Precision: 0.4817
+                Recall: 0.5054
+                F1 Score: 0.4517
+                ================================================================================
+                

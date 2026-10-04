@@ -1,0 +1,28 @@
+{
+  "model_name": "dinov3_vit_original",
+  "model_path": "./dinov3_vit_model_original",
+  "gpu": "NVIDIA A40",
+  "image_size": 224,
+  "flops_g": 123.108184064,
+  "baseline_file": null,
+  "baseline_flops_g": null,
+  "idle_power_w": 80.776,
+  "num_runs": 5,
+  "num_iterations": 100,
+  "timestamp": "2026-10-03T22:46:27",
+  "results": [
+    {
+      "Batch Size": 128,
+      "Latency (ms)": 281.1855664253235,
+      "Latency Std (ms)": 0.6701728375257626,
+      "Throughput (imgs/s)": 455.21799347031003,
+      "Throughput Std (imgs/s)": 1.0882886676599406,
+      "Memory (GB)": 1.1507363319396973,
+      "Memory (%)": 2.590358329097054,
+      "Power (W)": 299.36073089701,
+      "Net Power (W)": 218.58473089701,
+      "Energy/Image (J)": 0.48017594654080037,
+      "FLOPs (G)": 123.108184064
+    }
+  ]
+}

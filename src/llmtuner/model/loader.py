@@ -1,24 +1,23 @@
-from trl import AutoModelForCausalLMWithValueHead
 from typing import TYPE_CHECKING, Optional, Tuple
 
 from transformers import AutoTokenizer
 from transformers.integrations import is_deepspeed_zero3_enabled
 from .adapter import init_adapter
-from .patcher import patch_config, patch_model, patch_tokenizer, patch_valuehead_model
-from .utils import load_valuehead_params, register_autoclass
+from .patcher import patch_config, patch_model, patch_tokenizer
+from .utils import register_autoclass, is_vision_model
 from ..extras.logging import get_logger
 from ..extras.misc import count_parameters, get_current_device, try_download_model_from_ms
-try:
-    from auto_gptq import AutoGPTQForCausalLM
-except ImportError:
-    AutoGPTQForCausalLM = None
 
 if TYPE_CHECKING:
     from transformers import PreTrainedModel, PreTrainedTokenizer
     from ..hparams import FinetuningArguments, ModelArguments
 
-# 🔍🔍🔍
-from transformers import AutoConfig, AutoModelForCausalLM
+from transformers import AutoConfig, AutoModel, AutoModelForCausalLM, AutoModelForImageClassification, AutoImageProcessor
+
+try:
+    from auto_gptq import AutoGPTQForCausalLM
+except ImportError:
+    AutoGPTQForCausalLM = None
 
 
 logger = get_logger(__name__)
@@ -28,7 +27,6 @@ def load_model_and_tokenizer(
         model_args: "ModelArguments",
         finetuning_args: "FinetuningArguments",
         is_trainable: Optional[bool] = False,
-        add_valuehead: Optional[bool] = False,
 ) -> Tuple["PreTrainedModel", "PreTrainedTokenizer"]:
     r"""
     Loads pretrained model and tokenizer.
@@ -52,18 +50,35 @@ def load_model_and_tokenizer(
         "token": model_args.hf_hub_token,
         "attn_implementation": "eager",  # 🔍
     }
-    tokenizer = AutoTokenizer.from_pretrained(
-        model_args.model_name_or_path,
-        use_fast=model_args.use_fast_tokenizer,
-        split_special_tokens=model_args.split_special_tokens,
-        padding_side="right",
-        **config_kwargs,
-    )
-    patch_tokenizer(tokenizer)
+
+    is_vision = is_vision_model(model_args.model_name_or_path)
+    if is_vision: # For vision models, use image processor instead of tokenizer
+        tokenizer = AutoImageProcessor.from_pretrained(
+            model_args.model_name_or_path,
+            **config_kwargs,
+        )
+    else: # For language models, use tokenizer
+        tokenizer = AutoTokenizer.from_pretrained(
+            model_args.model_name_or_path,
+            use_fast=model_args.use_fast_tokenizer,
+            split_special_tokens=model_args.split_special_tokens,
+            padding_side="right",
+            **config_kwargs,
+        )
+        patch_tokenizer(tokenizer)
 
     config = AutoConfig.from_pretrained(model_args.model_name_or_path, **config_kwargs)
     config.use_cache=False
-    print(config)
+    is_vision = is_vision_model(model_args.model_name_or_path)
+    if not is_vision:
+        print(config)
+    else:
+        print(f"{config.__class__.__name__} {{"
+              f'"model_type": "{getattr(config, "model_type", "unknown")}", '
+              f'"num_hidden_layers": {getattr(config, "num_hidden_layers", "N/A")}, '
+              f'"hidden_size": {getattr(config, "hidden_size", "N/A")}, '
+              f'"image_size": {getattr(config, "image_size", "N/A")}'
+              f"}}")
     patch_config(config, tokenizer, model_args, config_kwargs, is_trainable)
 
     model = None
@@ -91,13 +106,25 @@ def load_model_and_tokenizer(
 
     if model is None:
         if not model_args.autogptq:
-            model = AutoModelForCausalLM.from_pretrained(
-                model_args.model_name_or_path,
-                config=config,
-                torch_dtype=model_args.compute_dtype,
-                low_cpu_mem_usage=(not is_deepspeed_zero3_enabled()),
-                **config_kwargs,
-            )
+            if is_vision:
+                # DINOv3ViT has no ForImageClassification class — use AutoModel instead
+                model_type = getattr(config, "model_type", None)
+                auto_cls = AutoModel if model_type == "dinov3_vit" else AutoModelForImageClassification
+                model = auto_cls.from_pretrained(
+                    model_args.model_name_or_path,
+                    config=config,
+                    torch_dtype=model_args.compute_dtype,
+                    low_cpu_mem_usage=(not is_deepspeed_zero3_enabled()),
+                    **config_kwargs,
+                )
+            else:
+                model = AutoModelForCausalLM.from_pretrained(
+                    model_args.model_name_or_path,
+                    config=config,
+                    torch_dtype=model_args.compute_dtype,
+                    low_cpu_mem_usage=(not is_deepspeed_zero3_enabled()),
+                    **config_kwargs,
+                )
         else:
             if AutoGPTQForCausalLM is None:
                 raise ImportError("auto-gptq is required when `model_args.autogptq` is enabled.")
@@ -115,20 +142,6 @@ def load_model_and_tokenizer(
     register_autoclass(config, model, tokenizer)
 
     model = init_adapter(model, model_args, finetuning_args, is_trainable)
-
-    if add_valuehead:
-        model: "AutoModelForCausalLMWithValueHead" = AutoModelForCausalLMWithValueHead.from_pretrained(model)
-        patch_valuehead_model(model)
-
-        if model_args.adapter_name_or_path is not None:
-            vhead_path = model_args.adapter_name_or_path[-1]
-        else:
-            vhead_path = model_args.model_name_or_path
-
-        vhead_params = load_valuehead_params(vhead_path, model_args)
-        if vhead_params is not None:
-            model.load_state_dict(vhead_params, strict=False)
-            logger.info("Loaded valuehead from checkpoint: {}".format(vhead_path))
 
     if not is_trainable:
         model.requires_grad_(False)
@@ -161,31 +174,4 @@ def load_model_and_tokenizer(
     return model, tokenizer
 
 
-def load_tokenizer(
-        model_args: "ModelArguments",
-) -> Tuple["PreTrainedTokenizer"]:
-    r"""
-    Loads pretrained model and tokenizer.
 
-    Support both training and inference.
-    """
-
-    try_download_model_from_ms(model_args)
-
-    config_kwargs = {
-        "trust_remote_code": True,
-        "cache_dir": model_args.cache_dir,
-        "revision": model_args.model_revision,
-        "token": model_args.hf_hub_token,
-        "attn_implementation": "flash_attention_2",  # 🔍
-    }
-
-    tokenizer = AutoTokenizer.from_pretrained(
-        model_args.model_name_or_path,
-        use_fast=model_args.use_fast_tokenizer,
-        split_special_tokens=model_args.split_special_tokens,
-        padding_side="right",
-        **config_kwargs,
-    )
-
-    return tokenizer

@@ -1,0 +1,16 @@
+
+                RESULTS
+                Model: ./vit_model
+                Dataset: Kaggle38
+                Dataset classes: 38
+                Model classes: 1000
+                Head fine-tuning: YES
+                Pruning method: layer_drop_all
+                Layers dropped: 12
+                Total samples: 2880
+                Accuracy: 0.6726 (67.26%)
+                Precision: 0.5755
+                Recall: 0.5144
+                F1 Score: 0.5107
+                ================================================================================
+                

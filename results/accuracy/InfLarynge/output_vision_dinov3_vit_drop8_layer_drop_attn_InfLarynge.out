@@ -1,0 +1,16 @@
+
+                RESULTS
+                Model: ./dinov3_vit_model
+                Dataset: InfLarynge
+                Dataset classes: 4
+                Model classes: 4
+                Head fine-tuning: YES
+                Pruning method: layer_drop_attn
+                Layers dropped: 8
+                Total samples: 240
+                Accuracy: 0.7500 (75.00%)
+                Precision: 0.8127
+                Recall: 0.7500
+                F1 Score: 0.6997
+                ================================================================================
+                

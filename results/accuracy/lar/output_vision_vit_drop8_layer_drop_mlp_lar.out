@@ -1,0 +1,16 @@
+
+                RESULTS
+                Model: ./vit_model
+                Dataset: lar
+                Dataset classes: 4
+                Model classes: 1000
+                Head fine-tuning: YES
+                Pruning method: layer_drop_mlp
+                Layers dropped: 8
+                Total samples: 280
+                Accuracy: 0.8964 (89.64%)
+                Precision: 0.9003
+                Recall: 0.9012
+                F1 Score: 0.8977
+                ================================================================================
+                

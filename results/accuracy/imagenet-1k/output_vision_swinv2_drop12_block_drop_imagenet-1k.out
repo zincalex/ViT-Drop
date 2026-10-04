@@ -1,0 +1,16 @@
+
+                RESULTS
+                Model: ./swinv2_model_imnet
+                Dataset: imagenet-1k-orig
+                Dataset classes: 1000
+                Model classes: 1000
+                Head fine-tuning: SKIPPED
+                Pruning method: block_drop
+                Layers dropped: 12
+                Total samples: 50000
+                Accuracy: 0.2718 (27.18%)
+                Precision: 0.3983
+                Recall: 0.2718
+                F1 Score: 0.2695
+                ================================================================================
+                

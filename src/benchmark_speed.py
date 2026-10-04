@@ -116,12 +116,9 @@ def load_model(model_path, model_type, quant_file, n_generate, batch_size, no_sa
         # AWQ
         if "AWQ" in model_path:
             model = AutoAWQForCausalLM.from_quantized(
-                model_path,
-                quant_file,
-                fuse_layers=True,
-                max_seq_len=n_generate,
-                batch_size=batch_size,
-                safetensors=not no_safetensors,
+                model_path, quant_file, fuse_layers=True,
+                max_seq_len=n_generate, batch_size=batch_size,
+                safetensors=not no_safetensors
                 trust_remote_code=True,
             )
         # GPTQ
@@ -129,6 +126,7 @@ def load_model(model_path, model_type, quant_file, n_generate, batch_size, no_sa
             quantize_config = BaseQuantizeConfig.from_pretrained(model_path)
             inject_fused_attention = True
             inject_fused_mlp = True
+            use_triton = True
             use_triton = False
             use_safetensors = True
             model = AutoGPTQForCausalLM.from_quantized(
@@ -199,7 +197,7 @@ def run_round(generator, model, n_generate, input_ids, batch_size, pretrained):
     else:
         try:
             version = model.quant_config.version
-        except AttributeError:
+        except:
             version = "gptq"
     return {
         "Batch Size": batch_size,
@@ -245,7 +243,8 @@ def main(args):
             args.batch_size,
             args.no_safetensors,
             args.pretrained,
-            model=model,
+            model=model, 
+            trust_remote_code=True, 
         )
 
         stats, model_version = run_round(

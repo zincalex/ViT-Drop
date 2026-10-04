@@ -1,0 +1,16 @@
+
+                RESULTS
+                Model: ./dinov2_model
+                Dataset: lar
+                Dataset classes: 4
+                Model classes: 1000
+                Head fine-tuning: YES
+                Pruning method: block_drop
+                Layers dropped: 16
+                Total samples: 280
+                Accuracy: 0.9893 (98.93%)
+                Precision: 0.9896
+                Recall: 0.9886
+                F1 Score: 0.9889
+                ================================================================================
+                

@@ -1,0 +1,16 @@
+
+                RESULTS
+                Model: ./dinov3_vit_model
+                Dataset: ColorBG
+                Dataset classes: 3
+                Model classes: 3
+                Head fine-tuning: YES
+                Pruning method: layer_drop_all
+                Layers dropped: 6
+                Total samples: 60
+                Accuracy: 0.8000 (80.00%)
+                Precision: 0.7948
+                Recall: 0.7616
+                F1 Score: 0.7664
+                ================================================================================
+                

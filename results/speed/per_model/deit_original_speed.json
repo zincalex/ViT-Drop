@@ -1,0 +1,28 @@
+{
+  "model_name": "deit_original",
+  "model_path": "./deit_model_original",
+  "gpu": "NVIDIA A40",
+  "image_size": 224,
+  "flops_g": 35.428712448,
+  "baseline_file": null,
+  "baseline_flops_g": null,
+  "idle_power_w": 66.52777777777777,
+  "num_runs": 5,
+  "num_iterations": 100,
+  "timestamp": "2026-09-12T09:30:47",
+  "results": [
+    {
+      "Batch Size": 128,
+      "Latency (ms)": 66.25411939620972,
+      "Latency Std (ms)": 0.136915635723502,
+      "Throughput (imgs/s)": 1931.9635896585976,
+      "Throughput Std (imgs/s)": 3.990330345713554,
+      "Memory (GB)": 0.7179141044616699,
+      "Memory (%)": 1.6161496304606497,
+      "Power (W)": 296.73786206896557,
+      "Net Power (W)": 230.2100842911878,
+      "Energy/Image (J)": 0.11915860398376805,
+      "FLOPs (G)": 35.428712448
+    }
+  ]
+}

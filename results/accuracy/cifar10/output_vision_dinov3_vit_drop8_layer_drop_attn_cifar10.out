@@ -1,0 +1,16 @@
+
+                RESULTS
+                Model: ./dinov3_vit_model
+                Dataset: cifar10
+                Dataset classes: 10
+                Model classes: 10
+                Head fine-tuning: YES
+                Pruning method: layer_drop_attn
+                Layers dropped: 8
+                Total samples: 10000
+                Accuracy: 0.7469 (74.69%)
+                Precision: 0.7551
+                Recall: 0.7469
+                F1 Score: 0.7447
+                ================================================================================
+                

@@ -1,0 +1,16 @@
+
+                RESULTS
+                Model: ./dinov3_vit_model
+                Dataset: Kaggle38
+                Dataset classes: 38
+                Model classes: 38
+                Head fine-tuning: YES
+                Pruning method: block_drop
+                Layers dropped: 6
+                Total samples: 2880
+                Accuracy: 0.7389 (73.89%)
+                Precision: 0.6777
+                Recall: 0.5791
+                F1 Score: 0.5909
+                ================================================================================
+                

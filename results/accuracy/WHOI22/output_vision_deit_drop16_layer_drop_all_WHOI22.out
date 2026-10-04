@@ -1,0 +1,16 @@
+
+                RESULTS
+                Model: ./deit_model
+                Dataset: WHOI22
+                Dataset classes: 22
+                Model classes: 1000
+                Head fine-tuning: YES
+                Pruning method: layer_drop_all
+                Layers dropped: 16
+                Total samples: 3300
+                Accuracy: 0.7155 (71.55%)
+                Precision: 0.7319
+                Recall: 0.7153
+                F1 Score: 0.7094
+                ================================================================================
+                

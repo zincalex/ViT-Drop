@@ -1,0 +1,16 @@
+
+                RESULTS
+                Model: ./deit_model
+                Dataset: InfLarynge
+                Dataset classes: 4
+                Model classes: 1000
+                Head fine-tuning: YES
+                Pruning method: block_drop
+                Layers dropped: 2
+                Total samples: 240
+                Accuracy: 0.9417 (94.17%)
+                Precision: 0.9420
+                Recall: 0.9417
+                F1 Score: 0.9418
+                ================================================================================
+                

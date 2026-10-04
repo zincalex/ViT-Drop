@@ -1,0 +1,16 @@
+
+                RESULTS
+                Model: ./swinv2_model
+                Dataset: CrossD
+                Dataset classes: 44
+                Model classes: 1000
+                Head fine-tuning: YES
+                Pruning method: block_drop
+                Layers dropped: 24
+                Total samples: 68100
+                Accuracy: 0.0208 (2.08%)
+                Precision: 0.0236
+                Recall: 0.0285
+                F1 Score: 0.0062
+                ================================================================================
+                

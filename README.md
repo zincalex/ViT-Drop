@@ -1,271 +1,259 @@
-<div align="center">
-
-# Uncovering the Redundancy in Transformers via a Unified Study of Layer Dropping
-
-[![TMLR](https://img.shields.io/badge/TMLR-2026-0B7285?style=for-the-badge&logo=openaccess&logoColor=white)](https://openreview.net/forum?id=1I7PCbOPfe)
-[![OpenReview](https://img.shields.io/badge/Paper-OpenReview-8A2BE2?style=for-the-badge&logo=openreview&logoColor=white)](https://openreview.net/forum?id=1I7PCbOPfe)
-[![arXiv](https://img.shields.io/badge/arXiv-2406.15786-b31b1b?style=for-the-badge&logo=arxiv&logoColor=white)](https://arxiv.org/abs/2406.15786)
-[![Hugging Face](https://img.shields.io/badge/🤗%20Models-Hugging%20Face-FFD21E?style=for-the-badge)](https://huggingface.co/collections/LLM-Drop/llm-drop-66dde616140f04eb18424a0a)
-[![Project Page](https://img.shields.io/badge/🌐%20Website-Project%20Page-0d6b5d?style=for-the-badge)](https://case-lab-umd.github.io/LLM-Drop/)
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue?style=for-the-badge)](LICENSE)
-[![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
+<h1 align="center">Retraining-Free Depth Pruning of Vision Transformers: A Cross Domain Study of Layer Redundancy</h1>
 
 <p align="center">
-  <b><a href="https://shwai-he.github.io/">Shwai He*</a></b>,
-  <b><a href="https://s1ghhh.github.io/">Guoheng Sun*</a></b>,
-  <b><a href="https://shenzheyu.github.io/">Zheyu Shen</a></b>,
-  <b><a href="https://www.ang-li.com/">Ang Li</a></b>
-  <br>
-  <i>CASE Lab, University of Maryland, College Park</i>
-  <br>
-  <sub>* Equal contribution</sub>
+  <strong>Alessandro Viespoli</strong>, <strong>Loris Nanni</strong><br>
+  DEI, University of Padua
 </p>
 
 <p align="center">
-  <a href="https://case-lab-umd.github.io/LLM-Drop/">🌐 <b>Project Page</b></a> •
-  <a href="#-news--recognition">🏆 <b>News & Awards</b></a> •
-  <a href="#-key-highlights">🌟 <b>Highlights</b></a> •
-  <a href="#-methodology--taxonomy">📐 <b>Taxonomy</b></a> •
-  <a href="#-model-zoo--checkpoints">🧰 <b>Model Zoo</b></a> •
-  <a href="#%EF%B8%8F-installation">⚙️ <b>Installation</b></a> •
-  <a href="#-quickstart--usage">🚀 <b>Quickstart</b></a> •
-  <a href="#-benchmark-results">📊 <b>Benchmarks</b></a> •
-  <a href="#-citation">📄 <b>Citation</b></a>
+  <em>Built on top of <a href="https://openreview.net/forum?id=1I7PCbOPfe">Uncovering the Redundancy in Transformers via a Unified Study of Layer Dropping</a> (TMLR 2026) by <a href="https://shwai-he.github.io/">Shwai He*</a>, <a href="https://s1ghhh.github.io/">Guoheng Sun*</a>, <a href="https://shenzheyu.github.io/">Zheyu Shen</a>, <a href="https://www.ang-li.com/">Ang Li</a>, University of Maryland, College Park</em>
 </p>
-
-</div>
-
----
-
-> [!NOTE]
-> This is the official repository for the paper **[Uncovering the Redundancy in Transformers via a Unified Study of Layer Dropping](https://openreview.net/forum?id=1I7PCbOPfe)**, published in **Transactions on Machine Learning Research (TMLR 2026)** *(Early version: [What Matters in Transformers? Not All Attention Is Needed](https://arxiv.org/abs/2406.15786))*.
-
----
-
-## 🏆 News & Recognition
-
-- **[Feb 2026]** 📄 Published in **Transactions on Machine Learning Research (TMLR 2026)**!
-- **[May 2025]** 🏆 **Won the Qualcomm Innovation Fellowship (QIF) North America 2025** for the proposal *"Less Attention, Much Faster: Toward a Future of Efficiency-Optimized Transformer Architectures."*
-- **[Nov 2024]** 🚀 Added support for more foundation model families (**Gemma-2**, **DeepSeek**, **Yi**, **Baichuan**, **Solar**).
-- **[Sep 2024]** 🤗 Released dropped-model checkpoints on [Hugging Face](https://huggingface.co/collections/LLM-Drop/llm-drop-66dde616140f04eb18424a0a).
-- **[Jun 2024]** 💡 Released initial arXiv preprint and complete codebase.
-
----
-
-## 🌟 Key Highlights
-
-- ⚡ **Significant Speedup & Memory Savings**: Achieves up to **2.1× inference speedup** and over **40% KV cache memory reduction** without requiring specialized hardware kernels.
-- 🧩 **Unified Dropping Taxonomy**: Systematically dissects and compares **Block Drop**, **Attention-Layer Drop**, **MLP-Layer Drop**, and **Joint Layer Drop** under a standardized framework.
-- 🎯 **High Performance Retention**: Retains **>95–98%** of core reasoning and general language capabilities (MMLU, GSM8K, ARC-c, HellaSwag) through importance-aware layer selection.
-- 🗜️ **Orthogonal Quantization Synergy**: Easily pairs with post-training 4-bit quantization (**AWQ** / **GPTQ**) for compounding latency and memory benefits.
-- 🔌 **Plug-and-Play Hugging Face Integration**: Output models use standard `auto_map` configurations for seamless loading via `AutoModelForCausalLM`.
-
----
-
-## 📖 Overview
-
-Standard Transformer architectures treat every layer and sublayer identically throughout the network depth. However, deep representations exhibit profound **asymmetric redundancy**:
-1. **Attention Redundancy vs. MLP Redundancy**: In deeper layers, attention mechanisms often collapse into static routing patterns, whereas MLPs continue to perform knowledge retrieval and feature transformation.
-2. **Sublayer Granularity**: Dropping full blocks can cause catastrophic representational collapse; in contrast, selectively dropping attention or MLP sublayers provides fine-grained Pareto-optimal compression frontiers.
 
 <p align="center">
-  <img src="Layer_Drop.svg" alt="LLM-Drop Unified Framework" width="95%">
-  <br>
-  <em>Figure: Overview of LLM-Drop framework showing Block Drop, Sublayer Drop (Attention / MLP), Joint Dropping, and Quantization.</em>
+  <a href="#-whats-in-here">What's in here</a> •
+  <a href="#-installation">Installation</a> •
+  <a href="#-supported-architectures">Architectures</a> •
+  <a href="#-prepare-the-data">Data</a> •
+  <a href="#-prune-a-vision-model">Prune</a> •
+  <a href="#-benchmark-accuracy">Accuracy</a> •
+  <a href="#-benchmark-speed-and-energy">Speed</a> •
+  <a href="#-statistical-analysis">Statistics</a> •
+  <a href="#-automated-model-selection">Model selection</a> •
+  <a href="#-quantization-and-random-ablation">Quantization</a>
 </p>
 
----
 
-## 📐 Methodology & Taxonomy
+## 📖 What's in here
 
-| Strategy | Dropped Components | Target Redundancy | Memory / KV Cache Saving | Latency Speedup | Recommended Use Case |
-| :--- | :--- | :--- | :---: | :---: | :--- |
-| **Block Drop** | Full Transformer Block (MHA + MLP) | Inter-block similarity | 🟢 High (Weights + KV) | 🚀 High | High-throughput batch serving |
-| **Attention Drop** | Self-Attention / MHA Layers | Redundant query-key routing | ⚡ **40%+ KV Cache** | ⚡ High (Prefill & Decode) | Long-context & memory-bound generation |
-| **MLP Drop** | Feed-Forward (FFN/MLP) Layers | Parameter/computation bloat | 🟢 High (Weight footprint) | 🚀 High (Compute-heavy) | Compute-bound environments |
-| **Joint Layer Drop**| Hybrid Attention + MLP schedule | Compound depth redundancy | 🔥 Maximum flexibility | ⚡ Best Pareto curve | Custom hardware budget constraints |
-| **Drop + Quant** | Dropped model + 4-bit AWQ/GPTQ | Intra- & Inter-layer redundancy | 💎 Ultra-compact | 🔥 Maximum efficiency | Edge & on-device deployment |
+Prior work on large language models showed that deeper transformer layers often perform near-identity transformations, so a substantial fraction of model depth can be removed with little quality loss. This repository adapts the training-free, similarity-based layer dropping of [LLM-Drop](https://openreview.net/forum?id=1I7PCbOPfe) to vision transformers and measures how much depth redundancy pretrained vision backbones expose. It contains:
 
----
+- **Retraining-free depth pruning** with 4 strategies (Block Drop, Attention Drop, MLP Drop and Joint Layer Drop) for flat and hierarchical vision transformers.
+- **A classification benchmark** on 12 downstream datasets that keeps the backbone frozen and trains only a new linear head.
+- **Speed, FLOPs and energy measurement** for every pruned variant.
+- **Statistical analysis** of the accuracy differences, with difference and equivalence tests.
+- **Automated model selection** that searches `architecture × strategy × drop count` for a target dataset and returns the best pruned model.
+- **Quantization stacking** and a **random-drop ablation**.
 
-## 🧰 Model Zoo & Checkpoints
+The pruning machinery is built on [LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory).
 
-Pre-dropped model checkpoints are available in our [Hugging Face Collection](https://huggingface.co/collections/LLM-Drop/llm-drop-66dde616140f04eb18424a0a):
-
-| Model Base | Dropping Configuration | Hugging Face Checkpoint | Base Size | Dropped Size |
-| :--- | :--- | :--- | :---: | :---: |
-| **Mistral-7B-v0.1** | Attention-Drop (4 Attn dropped) | [LLM-Drop/Mistral-7B-drop-attn4](https://huggingface.co/collections/LLM-Drop/llm-drop-66dde616140f04eb18424a0a) | 7.2B | ~6.5B |
-| **Mistral-7B-v0.1** | MLP-Drop (4 MLP dropped) | [LLM-Drop/Mistral-7B-drop-mlp4](https://huggingface.co/collections/LLM-Drop/llm-drop-66dde616140f04eb18424a0a) | 7.2B | ~5.8B |
-| **Mistral-7B-v0.1** | Block-Drop (4 Blocks dropped) | [LLM-Drop/Mistral-7B-drop-block4](https://huggingface.co/collections/LLM-Drop/llm-drop-66dde616140f04eb18424a0a) | 7.2B | ~5.1B |
-| **Llama-2-7B** | Joint-Drop (6 Attn + 2 MLP) | [LLM-Drop/Llama-2-7B-joint-drop](https://huggingface.co/collections/LLM-Drop/llm-drop-66dde616140f04eb18424a0a) | 6.7B | ~5.3B |
-| **Llama-3-8B** | Attention-Drop (4 Attn dropped) | [LLM-Drop/Llama-3-8B-drop-attn4](https://huggingface.co/collections/LLM-Drop/llm-drop-66dde616140f04eb18424a0a) | 8.0B | ~7.2B |
-| **Gemma-2-9B** | Attention-Drop (6 Attn dropped) | [LLM-Drop/Gemma-2-9B-drop-attn6](https://huggingface.co/collections/LLM-Drop/llm-drop-66dde616140f04eb18424a0a) | 9.2B | ~8.1B |
-
-```python
-from transformers import AutoModelForCausalLM, AutoTokenizer
-
-# Load directly from Hugging Face with trust_remote_code
-model_id = "LLM-Drop/Mistral-7B-drop-attn4"
-tokenizer = AutoTokenizer.from_pretrained(model_id, trust_remote_code=True)
-model = AutoModelForCausalLM.from_pretrained(model_id, trust_remote_code=True, device_map="auto")
+```
+data/      dataset builders
+scripts/   run scripts
+src/       source code
 ```
 
----
 
-## ⚙️ Installation
+## 🔧 Installation
 
 ```bash
-# 1. Create and activate a clean conda environment
-conda create -n llm-drop python=3.10 -y
-conda activate llm-drop
+conda create -n vision-drop python=3.10 -y
+conda activate vision-drop
 
-# 2. Clone the repository
-git clone https://github.com/CASE-Lab-UMD/LLM-Drop.git
-cd LLM-Drop
+git clone https://github.com/zincalex/LLM-Vision-Drop.git
+cd LLM-Vision-Drop
 
-# 3. Install core dependencies and LLM-Drop package
+pip install -r requirements.txt
 pip install -e .
-pip install flash-attn --no-build-isolation
-
-# 4. Optional: Install Quantization dependencies (AutoAWQ & AutoGPTQ)
-cd src/llmtuner/compression/quantization/AutoAWQ
-pip install -e .
-cd AutoAWQ_kernels && pip install -e . && cd ..
-
-cd ../AutoGPTQ
-pip install -vvv --no-build-isolation -e .
-cd ../../../../..
 ```
 
----
-
-## 🚀 Quickstart & Usage
-
-### 1️⃣ Model Configuration Setup
-To load dropped models with standard Hugging Face `AutoModelForCausalLM`, add the `auto_map` and drop lists to `config.json`:
-
-```json
-{
-  "drop_mlp_list": [],
-  "drop_attn_list": [25, 26, 24, 22],
-  "auto_map": {
-    "AutoConfig": "configuration_dropped_mistral.MistralConfig",
-    "AutoModelForCausalLM": "modeling_dropped_mistral.MistralForCausalLM"
-  }
-}
-```
-
-*Drop list formats:*
-- **Drop Attention Layers**: `"drop_mlp_list": [], "drop_attn_list": [25, 26, 24, 22]`
-- **Drop MLP Layers**: `"drop_mlp_list": [26, 27, 25, 24], "drop_attn_list": []`
-- **Drop Full Blocks**: `"drop_mlp_list": [26, 25, 24, 27], "drop_attn_list": [26, 25, 24, 27]`
-
-### 2️⃣ Run Dropping Pipelines
+Models are pulled from Hugging Face on first use. For gated repositories, authenticate first:
 
 ```bash
-# Block Dropping
-bash scripts/dropping/block_drop.sh
-
-# Sublayer Dropping (Attention or MLP)
-bash scripts/dropping/layer_drop.sh
-
-# Joint Layer Dropping
-bash scripts/dropping/layer_drop_joint.sh
-
-# Iterative Dropping
-bash scripts/dropping/layer_drop_iterative.sh
+huggingface-cli login          # or: export HUGGINGFACE_TOKEN=<token>
 ```
 
-### 3️⃣ Benchmark Task Performance
+`scripts/benchmark/benchmark_vm_eval.sh` and `scripts/benchmark/benchmark_vm_speed.sh` clone the checkpoints with `HUGGINGFACE_TOKEN`, so uncomment and set it near the top of both scripts before running them.
 
-Evaluate dropped checkpoints on standard NLP and reasoning benchmarks with [EleutherAI/lm-evaluation-harness](https://github.com/EleutherAI/lm-evaluation-harness):
+
+## 🧰 Supported architectures
+Any flat, pre-norm vision transformer can be added. The paper uses 5 checkpoints:
+
+| Key | Checkpoint | Blocks | Input |
+|---|---|---|---|
+| `vit` | `google/vit-base-patch16-224` | 12 | 224 |
+| `deit` | `facebook/deit-base-patch16-224` | 12 | 224 |
+| `dinov2` | `facebook/dinov2-giant-imagenet1k-1-layer` | 40 | 224 |
+| `dinov3_vit` | `facebook/dinov3-vitl16-pretrain-lvd1689m` | 24 | 224 |
+| `swinv2` | `microsoft/swinv2-base-patch4-window16-256` | 24 | 256 |
+
+Input is the resolution produced by each checkpoint's image processor, which is used for every accuracy and speed result. DINOv2's config lists 518, but its processor crops to 224. DeiT-Base appears in the paper only in the ImageNet-1K analysis without retraining.
+
+
+## 📂 Prepare the data
+Each dataset lives in `data/<key>/` and provides these files:
+
+```
+data/<key>/
+├── train.h5
+├── val.h5
+├── test.h5
+```
+
+Each `.h5` file has 2 root entries, and nothing else is read.
+
+| Entry | Type | Contents |
+|---|---|---|
+| `images` | dataset **or** group | RGB `uint8`, values from 0 to 255 |
+| `labels` | dataset `(N,)` `int32` | class index, 0-indexed and contiguous |
+
+`images` comes in one of 2 layouts, and the loader detects which:
+
+- **Fixed size**: one dataset of shape `(N, H, W, 3)`.
+- **Variable size**: a group keyed by sample index as a string (`"0"`, `"1"`, ... `"N-1"`), each member `(H, W, 3)`. Sizes may differ per image.
+
+ImageNet-1K only needs `test.h5`, since the models are evaluated with their original classification head.
+
+<details>
+<summary><strong>Builders for the 13 benchmarked datasets</strong></summary>
+
+| Key | Paper name | Domain | Classes | Builder |
+|---|---|---|---|---|
+| `imagenet-1k` | ImageNet-1K | Natural images | 1000 | `python data/process_imagenet1k_dataset.py` |
+| `cifar10` | CIFAR-10 | Natural images | 10 | `python data/create_h5_splits.py --dataset cifar10` |
+| `LCZ42` | LCZ42 | Remote sensing, Sentinel-2 RGB | 17 | `python data/preprocess_lcz42_dataset.py`, then `python data/resplit_h5.py --dataset LCZ42` |
+| `CrossD` | CrossD | Plankton, cross-instrument | 44 | `python data/process_daplankton_dataset.py --base_path <DAPlankton dir>` |
+| `zoolake` | Zoolake | Lake zooplankton microscopy | 35 | `python data/create_h5_splits.py --dataset zoolake` |
+| `lar` | Laryngeal | Laryngeal endoscopy tissue | 4 | `python data/process_laryngeal_dataset.py --source_dir <dataset dir>` |
+| `InfLarynge` | InfLarynge | Laryngoscopy frame quality | 4 | `python data/process_mat_rgb_dataset.py --dataset InfLarynge --mat_path <file>.mat` |
+| `Bark` | Bark | Tree bark texture | 23 | `python data/process_mat_rgb_dataset.py --dataset Bark --mat_path <file>.mat` |
+| `Pest` | Pest | Crop pests | 10 | `python data/process_mat_rgb_dataset.py --dataset Pest --mat_path <file>.mat` |
+| `ColorBG` | ColorBG | Breast cancer histopathology, tumor grade | 3 | `python data/process_mat_dataset.py --dataset ColorBG` |
+| `Kaggle38` | Kaggle38 | Plankton, ISIIS | 38 | `python data/process_mat_dataset.py --dataset Kaggle38` |
+| `WHOI22` | WHOI22 | Plankton, Imaging FlowCytobot | 22 | `python data/process_mat_dataset.py --dataset WHOI22` |
+| `ZooScan20` | ZooScan20 | Zooplankton, ZooScan | 20 | `python data/process_mat_dataset.py --dataset ZooScan20` |
+
+</details>
+
+
+## 🚀 Prune a vision model
 
 ```bash
-bash scripts/benchmark/benchmark_lm_eval.sh
+bash scripts/dropping/vision_block_drop.sh        # drop whole blocks (attention + MLP)
+
+bash scripts/dropping/vision_layer_drop.sh        # drop attention OR MLP sublayers
+
+bash scripts/dropping/vision_layer_drop_joint.sh  # drop across both sublayer types
 ```
 
-### 4️⃣ Measure Speed & KV Cache Savings
+Edit the variables at the top of the script to control the run:
+
+| Variable | Meaning |
+|---|---|
+| `model_name` / `model_name_or_path` | architecture key and Hugging Face checkpoint (must match) |
+| `drop_n` | how many sublayers or blocks to remove |
+| `target_layer` | `attn` or `mlp` in `vision_layer_drop.sh` (`all` in the joint script) |
+| `n_calibration_samples` | calibration set size, must divide evenly across GPUs |
+
+Similarities are computed with one forward pass over 512 ImageNet-1K validation images shipped in `src/llmtuner/data/imagenet_demo_images/`, and cached in `results_prune/cache/`. Each run writes `results_prune/<model>-<method>-discrete-drop<n>/checkpoint/config.json`, where `<method>` is `block_drop`, `layer_drop_attn`, `layer_drop_mlp` or `layer_drop_all`. The config encodes which sublayers are skipped:
+
+```jsonc
+// attention sublayers only
+{ "drop_attn_list": [25, 26, 24, 22], "drop_mlp_list": [] }
+
+// MLP sublayers only
+{ "drop_attn_list": [], "drop_mlp_list": [26, 27, 25, 24] }
+
+// whole blocks (both lists identical)
+{ "drop_attn_list": [26, 25, 24, 27], "drop_mlp_list": [26, 25, 24, 27] }
+```
+
+The benchmarks copy only this config into the model directory, so the removed modules are never instantiated when the model is loaded. To sweep drop counts, loop `drop_n` over the values you need. **Also generate a `drop0` variant** for every architecture and method. The benchmarks use it as the unpruned reference, and the model selection pipeline skips any pair that lacks one.
+
+
+## 📊 Benchmark accuracy
+```bash
+bash scripts/benchmark/benchmark_vm_eval.sh
+```
+
+Set `model_names`, `drop_nums`, `prune_methods` and `datasets` at the top of the script. For every configuration, the script copies the pruned config into `./<model>_model`, replaces the classification head with a new linear layer, trains it for 5 epochs with the backbone frozen (AdamW, learning rate 0.001, weight decay 0.03, batch size 32) and evaluates on the test split. On ImageNet-1K, models with a 1000-class head are evaluated directly without training.
+
+Each run writes `output_vision_<model>_drop<n>_<method>_<dataset>.out` with accuracy, macro precision, recall and F1, plus an HDF5 file with logits, predictions and labels. The analysis scripts expect the `.out` files in `results/accuracy/<dataset>/`.
+
+
+## ⚡ Benchmark speed and energy
+```bash
+bash scripts/benchmark/benchmark_vm_speed.sh            # all architectures
+bash scripts/benchmark/benchmark_vm_speed.sh dinov2     # only the listed ones
+```
+
+Throughput, latency, peak memory, GFLOPs and GPU board power are measured on random inputs at batch size 128, over 5 runs of 100 iterations, at the input resolution of each architecture. The script uses its own model copy (`./<model>_model_speed`), so it can run alongside the accuracy benchmark. It writes one CSV per configuration to `results/speed/per_model/` and a summary with the speedup over the unpruned model to `results/speed/speed_master.csv`.
 
 ```bash
-bash scripts/benchmark/benchmark_speed.sh
+python3 src/analysis/energy.py                   # energy per image and saving vs. the unpruned model
+bash scripts/visualization/compute_sdr_all.sh    # Speedup Degradation Ratio, written to results/sdr/
 ```
 
-### 5️⃣ Post-Training Quantization (AWQ / GPTQ)
+Energy per image is the average board power during the timed runs divided by throughput. SDR is the relative accuracy loss averaged over the 12 downstream datasets divided by the relative throughput gain, so lower is better and negative values mean the pruned model is more accurate than the unpruned one.
+
+
+## 📐 Statistical analysis
+```bash
+python3 src/analysis/statistical_tests.py --delta 2 --alpha 0.05
+```
+
+Reads the per-dataset accuracies in `results/accuracy/` and pairs every pruned configuration with the unpruned model of the same architecture over the 12 downstream datasets. For each configuration it reports:
+
+1. the two-sided Wilcoxon signed-rank test, Holm-adjusted over the drop counts of each architecture and method;
+2. the TOST equivalence test, implemented as 2 one-sided Wilcoxon tests against a margin of ±`delta` percentage points;
+3. the Hodges-Lehmann estimate of the median accuracy difference with its 90% confidence interval;
+4. the outcome: equivalent, superior, inferior or inconclusive.
+
+This script, `energy.py` and `compute_sdr_all.sh` only read `results/` and run on CPU.
+
+
+## 🤖 Automated model selection
+No pruning setting wins on every dataset. The best architecture, strategy and drop count depend on the task, which leaves a few hundred candidates to try. The pipeline searches them and returns one deployment-ready model in 3 phases:
+
+1. **Baseline**: trains the head of the unpruned model (`drop0`) of each `(architecture, method)` pair for 5 epochs on the training split and records its validation accuracy.
+2. **Search**: trains the head for 5 epochs at increasing drop counts, in steps of 4. A direction is abandoned as soon as validation accuracy falls more than `early_stop_threshold` (0.05, that is 5 points) below its baseline.
+3. **Deep fine-tune**: retrains the winner for 20 epochs on the training and validation splits combined, then evaluates once on the test split.
 
 ```bash
-# 4-bit AWQ Quantization on Dropped Model
-bash scripts/quantization/awq.sh
-
-# 4-bit GPTQ Quantization on Dropped Model
-bash scripts/quantization/gptq.sh
+bash scripts/model-selection/run_selection.sh
 ```
 
----
+**Prerequisites.** For each architecture you want searched: a local model directory and a `drop0` config under `results_prune/`. Architectures or method pairs missing either are skipped with a log line, not an error.
 
-## 📊 Benchmark Results
+Among surviving variants the highest validation accuracy wins, and ties break toward the **larger** drop count, preferring more compression at equal quality. Everything lands in `results/selection/<dataset>/`:
 
-### Mistral-7B-v0.1 Dropping Performance
+| File | Contents |
+|---|---|
+| `selection_log_<dataset>.json` | every baseline and search result, the winner and the final test metrics |
+| `best_head_<dataset>.pt` | classification head weights from the deep fine-tune |
+| `logits_<dataset>.h5` | test-set logits and predictions for the winner |
 
-| Model Variant | Strategy | # Dropped | MMLU (5-shot) | GSM8K (8-shot) | ARC-c (25-shot) | HellaSwag (10-shot) | Relative Speedup | KV Cache Saving |
-| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| **Dense Base** | — | 0 | **64.2%** | **37.8%** | **60.1%** | **83.3%** | 1.00× | 0% |
-| **LLM-Drop (Attn)** | Attention Drop | 4 | **63.8%** | **37.1%** | **59.6%** | **82.9%** | **1.22×** | **-12.5%** |
-| **LLM-Drop (Attn)** | Attention Drop | 8 | **62.5%** | **35.4%** | **58.2%** | **81.7%** | **1.45×** | **-25.0%** |
-| **LLM-Drop (MLP)** | MLP Drop | 4 | **63.1%** | **36.2%** | **58.9%** | **82.4%** | **1.28×** | 0% |
-| **LLM-Drop (Block)** | Block Drop | 4 | **62.7%** | **35.0%** | **58.4%** | **81.9%** | **1.32×** | **-12.5%** |
-| **LLM-Drop + AWQ-4b**| Attn Drop + AWQ | 4 Attn | **63.2%** | **36.5%** | **59.0%** | **82.1%** | **2.14×** | **-12.5%** |
+The log is read back at startup, so an interrupted run resumes and skips the variants already recorded.
 
----
+To compare architectures, these scripts take the best configuration of each architecture from the selection logs, and the unpruned model, through the same 20-epoch protocol and evaluate them on the test split:
 
-## 📦 Repository Layout
-
-```
-LLM-Drop/
-├── docs/                   # GitHub Pages project website
-│   ├── index.html          # Interactive project homepage
-│   └── static/images/      # Figures and SVG assets
-├── scripts/
-│   ├── dropping/           # Block, layer, joint & iterative dropping scripts
-│   ├── benchmark/          # LM-Eval & inference speed benchmarks
-│   └── quantization/       # AWQ and GPTQ quantization scripts
-├── src/
-│   ├── compress.py         # Main entry point for importance estimation & dropping
-│   ├── benchmark_speed.py  # Inference latency & throughput measurement
-│   └── llmtuner/           # Core model definitions, dropping modules & pruning
-├── Layer_Drop.svg          # Architectural overview diagram
-├── setup.py                # Package setup script
-└── requirements.txt        # Base dependencies
+```bash
+CUDA_VISIBLE_DEVICES=0 python src/model-selection/evaluate_all_archs.py \
+    --output_csv results/selection/all_archs_test.csv
+CUDA_VISIBLE_DEVICES=0 python src/model-selection/evaluate_baseline_archs.py \
+    --output_csv results/selection/all_archs_baseline_test.csv
 ```
 
----
+Both swap configs in `./<arch>_model`, so run them one after the other and not in parallel with `benchmark_vm_eval.sh`. Use `--datasets` to restrict the run.
 
-## 📄 Citation
 
-If you find this work, repository, or released checkpoints helpful in your research, please cite our papers:
-
-```bibtex
-@article{he2026uncovering,
-  title={Uncovering the Redundancy in Transformers via a Unified Study of Layer Dropping},
-  author={He, Shwai and Sun, Guoheng and Shen, Zheyu and Li, Ang},
-  journal={Transactions on Machine Learning Research},
-  issn={2835-8856},
-  year={2026},
-  url={https://openreview.net/forum?id=1I7PCbOPfe}
-}
-
-@article{he2024what,
-  title={What Matters in Transformers? Not All Attention Is Needed},
-  author={He, Shwai and Sun, Guoheng and Shen, Zheyu and Li, Ang},
-  journal={arXiv preprint arXiv:2406.15786},
-  year={2024}
-}
+## 🧮 Quantization and random ablation
+```bash
+bash scripts/quantization/run_quant_stack.sh
 ```
 
----
+Combines each listed pruned configuration and its unpruned model with weight-only quantization through `bitsandbytes`. The head is trained once in FP32 with the 5-epoch protocol and attached to FP32, BF16, INT8 and INT4 copies of the backbone, and throughput is measured at batch sizes 1, 8 and 128. It runs on a single GPU with plain `python`, skips configurations whose result already exists and writes `results/quantization/<dataset>/quant_stack_<arch>_<method>.json`.
 
-## 📬 Contact & Support
+```bash
+bash scripts/random-ablation/run_random_ablation.sh
+```
 
-For questions, collaborations, or issues:
-- **Shwai He**: [`shwaihe@umd.edu`](mailto:shwaihe@umd.edu) • [Homepage](https://shwai-he.github.io/)
-- **Guoheng Sun**: [`ghsun@umd.edu`](mailto:ghsun@umd.edu) • [Homepage](https://s1ghhh.github.io/)
-- **CASE Lab @ UMD**: [https://github.com/CASE-Lab-UMD](https://github.com/CASE-Lab-UMD)
+Removes the same number of modules as the similarity ranking, but chosen uniformly at random, with 3 seeds and the 5-epoch protocol on the validation split. The baseline and similarity-guided accuracies are read from the completed selection logs in `results/selection/`, so only the random variants are trained. Results go to `results/random_ablation/<dataset>/random_ablation_<dataset>.json`.
+
+
+## 📜 License and acknowledgements
+Released under the Apache 2.0 license, inherited from LLM-Drop. We thank the authors of [LLM-Drop](https://openreview.net/forum?id=1I7PCbOPfe) and [LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory) for making their code available.
+
+
+## 📬 Contact
+- Alessandro Viespoli: alessandro.viespoli@studenti.unipd.it
+- Loris Nanni: loris.nanni@unipd.it

@@ -1,0 +1,16 @@
+
+                RESULTS
+                Model: ./dinov3_vit_model
+                Dataset: WHOI22
+                Dataset classes: 22
+                Model classes: 22
+                Head fine-tuning: YES
+                Pruning method: layer_drop_mlp
+                Layers dropped: 6
+                Total samples: 3300
+                Accuracy: 0.8039 (80.39%)
+                Precision: 0.8200
+                Recall: 0.8037
+                F1 Score: 0.8051
+                ================================================================================
+                

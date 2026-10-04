@@ -1,0 +1,16 @@
+
+                RESULTS
+                Model: ./deit_model
+                Dataset: Kaggle38
+                Dataset classes: 38
+                Model classes: 1000
+                Head fine-tuning: YES
+                Pruning method: block_drop
+                Layers dropped: 4
+                Total samples: 2880
+                Accuracy: 0.8833 (88.33%)
+                Precision: 0.8483
+                Recall: 0.8221
+                F1 Score: 0.8311
+                ================================================================================
+                

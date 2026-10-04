@@ -2,6 +2,10 @@ from functools import partial
 from itertools import chain
 from typing import TYPE_CHECKING, Any, Callable, Dict, List, Literal, Tuple
 
+import torch
+import os
+from PIL import Image
+
 from .utils import Role
 from ..extras.constants import IGNORE_INDEX
 from ..extras.logging import get_logger
@@ -207,6 +211,28 @@ def preprocess_pairwise_dataset(
     return model_inputs
 
 
+def preprocess_vision_dataset(examples: Dict[str, List[Any]], image_processor: Any, data_args: "DataArguments") -> Dict[str, List[Any]]:
+    model_inputs = {"pixel_values": [], "labels": []}
+
+    for i in range(len(examples["image"])):
+        image_path = examples["image"][i]
+        if isinstance(image_path, str):
+            image_path = os.path.join(data_args.dataset_dir, image_path)
+            image = Image.open(image_path).convert('RGB')
+        else:
+            image = image_path.convert('RGB')
+
+        processed = image_processor(image, return_tensors="pt")
+        model_inputs["pixel_values"].append(processed["pixel_values"].squeeze(0).tolist())
+
+        if "label" in examples and i < len(examples["label"]):
+            model_inputs["labels"].append(examples["label"][i])
+        else:
+            model_inputs["labels"].append(0)  # dummy label
+
+    return model_inputs
+
+
 def print_supervised_dataset_example(example: Dict[str, List[int]], tokenizer: "PreTrainedTokenizer") -> None:
     print("input_ids:\n{}".format(example["input_ids"]))
     print("inputs:\n{}".format(tokenizer.decode(example["input_ids"], skip_special_tokens=False)))
@@ -232,14 +258,19 @@ def print_unsupervised_dataset_example(example: Dict[str, List[int]], tokenizer:
     print("inputs:\n{}".format(tokenizer.decode(example["input_ids"], skip_special_tokens=False)))
 
 
-def get_preprocess_and_print_func(
-        tokenizer: "PreTrainedTokenizer",
-        template: "Template",
-        data_args: "DataArguments",
-        training_args: "Seq2SeqTrainingArguments",
-        stage: Literal["pt", "sft", "rm", "ppo"],
-) -> Tuple[Callable, Callable]:
-    if stage == "pt":
+def print_vision_dataset_example(example: Dict[str, Any]) -> None:
+    pixel_values_tensor = torch.tensor(example['pixel_values'])  # List -> Tensor
+    print("pixel_values shape: {}".format(pixel_values_tensor.shape))
+    print("label: {}".format(example['labels']))
+
+
+def get_preprocess_and_print_func(tokenizer: "PreTrainedTokenizer", template: "Template", data_args: "DataArguments",
+                                  training_args: "Seq2SeqTrainingArguments", stage: Literal["pt", "sft", "rm", "ppo"],
+                                  is_vision: bool = False) -> Tuple[Callable, Callable]:
+    if is_vision:
+        preprocess_func = partial(preprocess_vision_dataset, image_processor=tokenizer, data_args=data_args)
+        print_function = partial(print_vision_dataset_example)
+    elif stage == "pt":
         preprocess_func = partial(preprocess_pretrain_dataset, tokenizer=tokenizer, data_args=data_args)
         print_function = partial(print_unsupervised_dataset_example, tokenizer=tokenizer)
     elif stage == "sft" and not training_args.predict_with_generate:

@@ -1,0 +1,16 @@
+
+                RESULTS
+                Model: ./vit_model
+                Dataset: ZooScan20
+                Dataset classes: 20
+                Model classes: 1000
+                Head fine-tuning: YES
+                Pruning method: layer_drop_attn
+                Layers dropped: 6
+                Total samples: 1900
+                Accuracy: 0.6432 (64.32%)
+                Precision: 0.7003
+                Recall: 0.5358
+                F1 Score: 0.5429
+                ================================================================================
+                

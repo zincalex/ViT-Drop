@@ -1,0 +1,16 @@
+
+                RESULTS
+                Model: ./dinov3_vit_model
+                Dataset: Bark
+                Dataset classes: 23
+                Model classes: 23
+                Head fine-tuning: YES
+                Pruning method: block_drop
+                Layers dropped: 16
+                Total samples: 4940
+                Accuracy: 0.4804 (48.04%)
+                Precision: 0.4701
+                Recall: 0.4463
+                F1 Score: 0.4386
+                ================================================================================
+                

@@ -1,0 +1,16 @@
+
+                RESULTS
+                Model: ./swinv2_model
+                Dataset: ZooScan20
+                Dataset classes: 20
+                Model classes: 1000
+                Head fine-tuning: YES
+                Pruning method: layer_drop_attn
+                Layers dropped: 16
+                Total samples: 1900
+                Accuracy: 0.6289 (62.89%)
+                Precision: 0.5192
+                Recall: 0.4916
+                F1 Score: 0.4831
+                ================================================================================
+                

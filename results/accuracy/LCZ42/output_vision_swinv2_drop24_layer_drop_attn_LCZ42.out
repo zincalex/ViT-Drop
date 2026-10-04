@@ -1,0 +1,16 @@
+
+                RESULTS
+                Model: ./swinv2_model
+                Dataset: LCZ42
+                Dataset classes: 17
+                Model classes: 1000
+                Head fine-tuning: YES
+                Pruning method: layer_drop_attn
+                Layers dropped: 24
+                Total samples: 24200
+                Accuracy: 0.3307 (33.07%)
+                Precision: 0.1985
+                Recall: 0.1749
+                F1 Score: 0.1398
+                ================================================================================
+                

@@ -1,0 +1,16 @@
+
+                RESULTS
+                Model: ./dinov3_vit_model
+                Dataset: ZooScan20
+                Dataset classes: 20
+                Model classes: 20
+                Head fine-tuning: YES
+                Pruning method: layer_drop_attn
+                Layers dropped: 8
+                Total samples: 1900
+                Accuracy: 0.2816 (28.16%)
+                Precision: 0.1592
+                Recall: 0.1828
+                F1 Score: 0.1368
+                ================================================================================
+                

@@ -1,0 +1,16 @@
+
+                RESULTS
+                Model: ./dinov2_model
+                Dataset: cifar10
+                Dataset classes: 10
+                Model classes: 1000
+                Head fine-tuning: YES
+                Pruning method: layer_drop_mlp
+                Layers dropped: 28
+                Total samples: 10000
+                Accuracy: 0.9450 (94.50%)
+                Precision: 0.9459
+                Recall: 0.9450
+                F1 Score: 0.9450
+                ================================================================================
+                
