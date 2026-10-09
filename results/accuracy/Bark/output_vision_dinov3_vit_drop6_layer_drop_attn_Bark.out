@@ -1,6 +1,6 @@
 
                 RESULTS
-                Model: ./dinov3_vit_model
+                Model: /home/cachefix/work/task9/dinov3_vit_model
                 Dataset: Bark
                 Dataset classes: 23
                 Model classes: 23
@@ -8,9 +8,9 @@
                 Pruning method: layer_drop_attn
                 Layers dropped: 6
                 Total samples: 4940
-                Accuracy: 0.4923 (49.23%)
-                Precision: 0.5357
-                Recall: 0.4164
-                F1 Score: 0.4125
+                Accuracy: 0.4721 (47.21%)
+                Precision: 0.5553
+                Recall: 0.4017
+                F1 Score: 0.3896
                 ================================================================================
                 

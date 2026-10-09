@@ -1,6 +1,6 @@
 
                 RESULTS
-                Model: ./vit_model
+                Model: /home/cachefix/work/task0/vit_model
                 Dataset: ZooScan20
                 Dataset classes: 20
                 Model classes: 1000
@@ -8,9 +8,9 @@
                 Pruning method: layer_drop_mlp
                 Layers dropped: 4
                 Total samples: 1900
-                Accuracy: 0.7053 (70.53%)
-                Precision: 0.7726
-                Recall: 0.6339
-                F1 Score: 0.6587
+                Accuracy: 0.7811 (78.11%)
+                Precision: 0.8197
+                Recall: 0.7586
+                F1 Score: 0.7776
                 ================================================================================
                 

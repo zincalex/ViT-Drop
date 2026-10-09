@@ -1,6 +1,6 @@
 
                 RESULTS
-                Model: ./dinov3_vit_model
+                Model: /home/cachefix/work/task9/dinov3_vit_model
                 Dataset: ColorBG
                 Dataset classes: 3
                 Model classes: 3
@@ -8,9 +8,9 @@
                 Pruning method: layer_drop_mlp
                 Layers dropped: 6
                 Total samples: 60
-                Accuracy: 0.6667 (66.67%)
-                Precision: 0.7085
-                Recall: 0.6810
-                F1 Score: 0.6524
+                Accuracy: 0.6333 (63.33%)
+                Precision: 0.6774
+                Recall: 0.6098
+                F1 Score: 0.5981
                 ================================================================================
                 

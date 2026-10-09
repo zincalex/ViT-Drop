@@ -1,6 +1,6 @@
 
                 RESULTS
-                Model: ./dinov3_vit_model
+                Model: /home/cachefix/work/task7/dinov3_vit_model
                 Dataset: InfLarynge
                 Dataset classes: 4
                 Model classes: 4
@@ -8,9 +8,9 @@
                 Pruning method: block_drop
                 Layers dropped: 2
                 Total samples: 240
-                Accuracy: 0.8917 (89.17%)
-                Precision: 0.8984
-                Recall: 0.8917
-                F1 Score: 0.8916
+                Accuracy: 0.9250 (92.50%)
+                Precision: 0.9250
+                Recall: 0.9250
+                F1 Score: 0.9245
                 ================================================================================
                 

@@ -49,8 +49,8 @@ src/       source code
 conda create -n vision-drop python=3.10 -y
 conda activate vision-drop
 
-git clone https://github.com/zincalex/LLM-Vision-Drop.git
-cd LLM-Vision-Drop
+git clone https://github.com/zincalex/ViT-Drop.git
+cd ViT-Drop
 
 pip install -r requirements.txt
 pip install -e .

@@ -49,4 +49,4 @@ word2number
 more_itertools
 
 # lm-evaluation-harness
-git+https://github.com/EleutherAI/lm-evaluation-harness.git@v0.4.11
+lm_eval @ git+https://github.com/EleutherAI/lm-evaluation-harness.git@v0.4.11

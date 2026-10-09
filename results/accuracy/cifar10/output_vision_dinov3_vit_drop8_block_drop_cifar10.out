@@ -1,6 +1,6 @@
 
                 RESULTS
-                Model: ./dinov3_vit_model
+                Model: /home/cachefix/work/task6/dinov3_vit_model
                 Dataset: cifar10
                 Dataset classes: 10
                 Model classes: 10
@@ -8,9 +8,9 @@
                 Pruning method: block_drop
                 Layers dropped: 8
                 Total samples: 10000
-                Accuracy: 0.4909 (49.09%)
-                Precision: 0.4946
-                Recall: 0.4909
-                F1 Score: 0.4808
+                Accuracy: 0.4997 (49.97%)
+                Precision: 0.5004
+                Recall: 0.4997
+                F1 Score: 0.4894
                 ================================================================================
                 

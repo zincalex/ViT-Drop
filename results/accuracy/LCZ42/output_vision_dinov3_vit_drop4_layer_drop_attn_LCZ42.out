@@ -1,6 +1,6 @@
 
                 RESULTS
-                Model: ./dinov3_vit_model
+                Model: /home/cachefix/work/task8/dinov3_vit_model
                 Dataset: LCZ42
                 Dataset classes: 17
                 Model classes: 17
@@ -8,9 +8,9 @@
                 Pruning method: layer_drop_attn
                 Layers dropped: 4
                 Total samples: 24200
-                Accuracy: 0.6315 (63.15%)
-                Precision: 0.5439
-                Recall: 0.4904
-                F1 Score: 0.4925
+                Accuracy: 0.6466 (64.66%)
+                Precision: 0.5748
+                Recall: 0.4884
+                F1 Score: 0.4939
                 ================================================================================
                 

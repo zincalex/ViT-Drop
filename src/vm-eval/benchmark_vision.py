@@ -120,7 +120,7 @@ def main():
     if skip_finetuning:
         model = accelerator.prepare(model)
     else :
-        model = finetune_head(model=model, accelerator=accelerator, num_workers=1,
+        model = finetune_head(model=model, accelerator=accelerator, num_workers=4,
                               dataset_name=args.dataset, dataset_base_dir=args.dataset_base_dir, processor=processor,
                               batch_size=args.batch_size, num_epochs=args.epochs, lr=args.lr, weight_decay=args.weight_decay)
 

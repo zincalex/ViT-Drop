@@ -1,6 +1,6 @@
 
                 RESULTS
-                Model: ./vit_model
+                Model: /home/cachefix/work/task1/vit_model
                 Dataset: lar
                 Dataset classes: 4
                 Model classes: 1000
@@ -8,9 +8,9 @@
                 Pruning method: layer_drop_all
                 Layers dropped: 8
                 Total samples: 280
-                Accuracy: 0.8964 (89.64%)
-                Precision: 0.9003
-                Recall: 0.9012
-                F1 Score: 0.8977
+                Accuracy: 0.9214 (92.14%)
+                Precision: 0.9258
+                Recall: 0.9248
+                F1 Score: 0.9229
                 ================================================================================
                 

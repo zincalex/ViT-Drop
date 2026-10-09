@@ -1,6 +1,6 @@
 
                 RESULTS
-                Model: ./vit_model
+                Model: /home/cachefix/work/task0/vit_model
                 Dataset: LCZ42
                 Dataset classes: 17
                 Model classes: 1000
@@ -8,9 +8,9 @@
                 Pruning method: layer_drop_mlp
                 Layers dropped: 12
                 Total samples: 24200
-                Accuracy: 0.4145 (41.45%)
-                Precision: 0.2931
-                Recall: 0.2371
-                F1 Score: 0.2063
+                Accuracy: 0.4742 (47.42%)
+                Precision: 0.3797
+                Recall: 0.2990
+                F1 Score: 0.2756
                 ================================================================================
                 

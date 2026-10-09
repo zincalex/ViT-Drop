@@ -1,6 +1,6 @@
 
                 RESULTS
-                Model: ./vit_model
+                Model: /home/cachefix/work/task1/vit_model
                 Dataset: zoolake
                 Dataset classes: 35
                 Model classes: 1000
@@ -8,9 +8,9 @@
                 Pruning method: layer_drop_mlp
                 Layers dropped: 6
                 Total samples: 2700
-                Accuracy: 0.9011 (90.11%)
-                Precision: 0.7160
-                Recall: 0.6552
-                F1 Score: 0.6651
+                Accuracy: 0.9230 (92.30%)
+                Precision: 0.7850
+                Recall: 0.7514
+                F1 Score: 0.7573
                 ================================================================================
                 

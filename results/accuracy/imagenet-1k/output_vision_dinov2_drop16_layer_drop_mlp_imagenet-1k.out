@@ -1,6 +1,6 @@
 
                 RESULTS
-                Model: ./dinov2_model_imnet
+                Model: /home/cachefix/work/task4/dinov2_model
                 Dataset: imagenet-1k-orig
                 Dataset classes: 1000
                 Model classes: 1000
@@ -8,9 +8,9 @@
                 Pruning method: layer_drop_mlp
                 Layers dropped: 16
                 Total samples: 50000
-                Accuracy: 0.6883 (68.83%)
-                Precision: 0.7492
-                Recall: 0.6883
-                F1 Score: 0.6907
+                Accuracy: 0.6980 (69.80%)
+                Precision: 0.7545
+                Recall: 0.6980
+                F1 Score: 0.6992
                 ================================================================================
                 

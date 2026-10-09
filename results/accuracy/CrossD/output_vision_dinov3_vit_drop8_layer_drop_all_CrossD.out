@@ -1,6 +1,6 @@
 
                 RESULTS
-                Model: ./dinov3_vit_model
+                Model: /home/cachefix/work/task6/dinov3_vit_model
                 Dataset: CrossD
                 Dataset classes: 44
                 Model classes: 44
@@ -8,9 +8,9 @@
                 Pruning method: layer_drop_all
                 Layers dropped: 8
                 Total samples: 68100
-                Accuracy: 0.5567 (55.67%)
-                Precision: 0.4899
-                Recall: 0.4142
-                F1 Score: 0.3538
+                Accuracy: 0.5581 (55.81%)
+                Precision: 0.5181
+                Recall: 0.4216
+                F1 Score: 0.3668
                 ================================================================================
                 

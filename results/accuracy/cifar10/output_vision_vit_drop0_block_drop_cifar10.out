@@ -1,6 +1,6 @@
 
                 RESULTS
-                Model: ./vit_model
+                Model: /home/cachefix/work/task0/vit_model
                 Dataset: cifar10
                 Dataset classes: 10
                 Model classes: 1000
@@ -8,9 +8,9 @@
                 Pruning method: block_drop
                 Layers dropped: 0
                 Total samples: 10000
-                Accuracy: 0.9362 (93.62%)
-                Precision: 0.9372
-                Recall: 0.9362
-                F1 Score: 0.9364
+                Accuracy: 0.9686 (96.86%)
+                Precision: 0.9689
+                Recall: 0.9686
+                F1 Score: 0.9687
                 ================================================================================
                 

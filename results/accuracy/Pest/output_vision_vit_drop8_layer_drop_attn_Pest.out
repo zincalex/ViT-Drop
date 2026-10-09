@@ -1,6 +1,6 @@
 
                 RESULTS
-                Model: ./vit_model
+                Model: /home/cachefix/work/task0/vit_model
                 Dataset: Pest
                 Dataset classes: 10
                 Model classes: 1000
@@ -8,9 +8,9 @@
                 Pruning method: layer_drop_attn
                 Layers dropped: 8
                 Total samples: 380
-                Accuracy: 0.4947 (49.47%)
-                Precision: 0.4932
-                Recall: 0.5061
-                F1 Score: 0.4665
+                Accuracy: 0.3342 (33.42%)
+                Precision: 0.3200
+                Recall: 0.2928
+                F1 Score: 0.2692
                 ================================================================================
                 

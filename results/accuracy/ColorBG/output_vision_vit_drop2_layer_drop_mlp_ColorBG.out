@@ -1,6 +1,6 @@
 
                 RESULTS
-                Model: ./vit_model
+                Model: /home/cachefix/work/task2/vit_model
                 Dataset: ColorBG
                 Dataset classes: 3
                 Model classes: 1000
@@ -8,9 +8,9 @@
                 Pruning method: layer_drop_mlp
                 Layers dropped: 2
                 Total samples: 60
-                Accuracy: 0.7167 (71.67%)
-                Precision: 0.7456
-                Recall: 0.7502
-                F1 Score: 0.7154
+                Accuracy: 0.6167 (61.67%)
+                Precision: 0.6862
+                Recall: 0.5835
+                F1 Score: 0.5774
                 ================================================================================
                 

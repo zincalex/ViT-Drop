@@ -1,6 +1,6 @@
 
                 RESULTS
-                Model: ./dinov3_vit_model
+                Model: /home/cachefix/work/task7/dinov3_vit_model
                 Dataset: ColorBG
                 Dataset classes: 3
                 Model classes: 3
@@ -9,8 +9,8 @@
                 Layers dropped: 12
                 Total samples: 60
                 Accuracy: 0.7167 (71.67%)
-                Precision: 0.7566
-                Recall: 0.7419
-                F1 Score: 0.7044
+                Precision: 0.7712
+                Recall: 0.7498
+                F1 Score: 0.7108
                 ================================================================================
                 

@@ -1,6 +1,6 @@
 
                 RESULTS
-                Model: ./dinov3_vit_model
+                Model: /home/cachefix/work/task8/dinov3_vit_model
                 Dataset: WHOI22
                 Dataset classes: 22
                 Model classes: 22
@@ -8,9 +8,9 @@
                 Pruning method: block_drop
                 Layers dropped: 4
                 Total samples: 3300
-                Accuracy: 0.8870 (88.70%)
-                Precision: 0.8899
-                Recall: 0.8869
-                F1 Score: 0.8867
+                Accuracy: 0.8818 (88.18%)
+                Precision: 0.8865
+                Recall: 0.8817
+                F1 Score: 0.8821
                 ================================================================================
                 

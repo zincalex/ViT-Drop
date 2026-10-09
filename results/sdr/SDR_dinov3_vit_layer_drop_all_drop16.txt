@@ -2,46 +2,46 @@
 BASELINE (drop_num=0)
 --------------------------------------------------------------------------------
 Throughput: 455.22 imgs/s
-Average Accuracy: 85.42% over 12 datasets
+Average Accuracy: 84.92% over 12 datasets
 
 Per-Dataset Accuracy:
-  - Bark: 83.56%
-  - ColorBG: 86.67%
-  - CrossD: 62.22%
-  - InfLarynge: 93.33%
-  - Kaggle38: 91.63%
-  - LCZ42: 63.63%
-  - Pest: 87.11%
-  - WHOI22: 92.79%
-  - ZooScan20: 74.00%
-  - cifar10: 99.13%
-  - lar: 96.79%
-  - zoolake: 94.22%
+  - Bark: 81.68%
+  - ColorBG: 81.67%
+  - CrossD: 60.93%
+  - InfLarynge: 90.83%
+  - Kaggle38: 92.36%
+  - LCZ42: 64.31%
+  - Pest: 85.53%
+  - WHOI22: 92.82%
+  - ZooScan20: 79.95%
+  - cifar10: 99.04%
+  - lar: 95.71%
+  - zoolake: 94.19%
 
 --------------------------------------------------------------------------------
 DROPPED MODEL (drop_num=16)
 --------------------------------------------------------------------------------
 Throughput: 673.71 imgs/s
-Average Accuracy: 71.54% over 12 datasets
+Average Accuracy: 72.17% over 12 datasets
 
 Per-Dataset Accuracy:
-  - Bark: 78.60%
-  - ColorBG: 73.33%
-  - CrossD: 22.96%
+  - Bark: 78.91%
+  - ColorBG: 76.67%
+  - CrossD: 22.76%
   - InfLarynge: 93.75%
-  - Kaggle38: 79.72%
-  - LCZ42: 64.96%
-  - Pest: 48.16%
-  - WHOI22: 73.73%
-  - ZooScan20: 59.05%
-  - cifar10: 89.12%
-  - lar: 88.21%
-  - zoolake: 86.93%
+  - Kaggle38: 80.94%
+  - LCZ42: 65.65%
+  - Pest: 46.05%
+  - WHOI22: 71.76%
+  - ZooScan20: 65.32%
+  - cifar10: 87.73%
+  - lar: 89.29%
+  - zoolake: 87.19%
 
 --------------------------------------------------------------------------------
 METRICS
 --------------------------------------------------------------------------------
-Relative accuracy loss:     +16.25%
+Relative accuracy loss:     +15.01%
 Relative throughput gain:   +48.00%
 Speedup:                    1.4800x
-SDR (gamma):                0.3385
+SDR (gamma):                0.3128

@@ -1,6 +1,6 @@
 
                 RESULTS
-                Model: ./vit_model
+                Model: /home/cachefix/work/task2/vit_model
                 Dataset: Bark
                 Dataset classes: 23
                 Model classes: 1000
@@ -8,9 +8,9 @@
                 Pruning method: layer_drop_mlp
                 Layers dropped: 2
                 Total samples: 4940
-                Accuracy: 0.7856 (78.56%)
-                Precision: 0.7781
-                Recall: 0.7672
-                F1 Score: 0.7470
+                Accuracy: 0.7927 (79.27%)
+                Precision: 0.7536
+                Recall: 0.7332
+                F1 Score: 0.7086
                 ================================================================================
                 

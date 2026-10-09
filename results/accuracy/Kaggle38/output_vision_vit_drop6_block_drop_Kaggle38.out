@@ -1,6 +1,6 @@
 
                 RESULTS
-                Model: ./vit_model
+                Model: /home/cachefix/work/task0/vit_model
                 Dataset: Kaggle38
                 Dataset classes: 38
                 Model classes: 1000
@@ -8,9 +8,9 @@
                 Pruning method: block_drop
                 Layers dropped: 6
                 Total samples: 2880
-                Accuracy: 0.7014 (70.14%)
-                Precision: 0.6475
-                Recall: 0.5530
-                F1 Score: 0.5460
+                Accuracy: 0.8090 (80.90%)
+                Precision: 0.7828
+                Recall: 0.7198
+                F1 Score: 0.7298
                 ================================================================================
                 

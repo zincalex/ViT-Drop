@@ -1,6 +1,6 @@
 
                 RESULTS
-                Model: ./dinov3_vit_model
+                Model: /home/cachefix/work/task7/dinov3_vit_model
                 Dataset: zoolake
                 Dataset classes: 35
                 Model classes: 35
@@ -8,9 +8,9 @@
                 Pruning method: block_drop
                 Layers dropped: 12
                 Total samples: 2700
-                Accuracy: 0.6556 (65.56%)
-                Precision: 0.4904
-                Recall: 0.3774
-                F1 Score: 0.3889
+                Accuracy: 0.6411 (64.11%)
+                Precision: 0.4566
+                Recall: 0.3572
+                F1 Score: 0.3634
                 ================================================================================
                 

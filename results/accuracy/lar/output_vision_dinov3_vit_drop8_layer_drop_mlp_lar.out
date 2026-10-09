@@ -1,6 +1,6 @@
 
                 RESULTS
-                Model: ./dinov3_vit_model
+                Model: /home/cachefix/work/task6/dinov3_vit_model
                 Dataset: lar
                 Dataset classes: 4
                 Model classes: 4
@@ -8,9 +8,9 @@
                 Pruning method: layer_drop_mlp
                 Layers dropped: 8
                 Total samples: 280
-                Accuracy: 0.7286 (72.86%)
-                Precision: 0.8349
-                Recall: 0.7143
-                F1 Score: 0.7172
+                Accuracy: 0.7571 (75.71%)
+                Precision: 0.8492
+                Recall: 0.7439
+                F1 Score: 0.7465
                 ================================================================================
                 

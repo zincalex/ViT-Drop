@@ -1,6 +1,6 @@
 
                 RESULTS
-                Model: ./vit_model
+                Model: /home/cachefix/work/task0/vit_model
                 Dataset: WHOI22
                 Dataset classes: 22
                 Model classes: 1000
@@ -8,9 +8,9 @@
                 Pruning method: block_drop
                 Layers dropped: 0
                 Total samples: 3300
-                Accuracy: 0.8964 (89.64%)
-                Precision: 0.8992
-                Recall: 0.8963
-                F1 Score: 0.8970
+                Accuracy: 0.8903 (89.03%)
+                Precision: 0.8951
+                Recall: 0.8902
+                F1 Score: 0.8913
                 ================================================================================
                 

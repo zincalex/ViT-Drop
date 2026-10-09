@@ -1,6 +1,6 @@
 
                 RESULTS
-                Model: ./vit_model
+                Model: /home/cachefix/work/task2/vit_model
                 Dataset: InfLarynge
                 Dataset classes: 4
                 Model classes: 1000
@@ -8,9 +8,9 @@
                 Pruning method: layer_drop_all
                 Layers dropped: 12
                 Total samples: 240
-                Accuracy: 0.9417 (94.17%)
-                Precision: 0.9444
-                Recall: 0.9417
-                F1 Score: 0.9413
+                Accuracy: 0.9167 (91.67%)
+                Precision: 0.9205
+                Recall: 0.9167
+                F1 Score: 0.9144
                 ================================================================================
                 

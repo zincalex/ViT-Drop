@@ -1,6 +1,6 @@
 
                 RESULTS
-                Model: ./dinov3_vit_model
+                Model: /home/cachefix/work/task9/dinov3_vit_model
                 Dataset: Pest
                 Dataset classes: 10
                 Model classes: 10
@@ -8,9 +8,9 @@
                 Pruning method: layer_drop_mlp
                 Layers dropped: 6
                 Total samples: 380
-                Accuracy: 0.6789 (67.89%)
-                Precision: 0.7176
-                Recall: 0.7024
-                F1 Score: 0.6729
+                Accuracy: 0.6263 (62.63%)
+                Precision: 0.6841
+                Recall: 0.6414
+                F1 Score: 0.6057
                 ================================================================================
                 

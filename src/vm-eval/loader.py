@@ -1,4 +1,6 @@
+import os
 import json
+import hashlib
 import h5py
 import torch
 import random
@@ -12,6 +14,16 @@ from torch.utils.data import Dataset, DataLoader
 
 
 SEED = 42
+
+
+def processor_fingerprint(processor) -> str:
+    cfg = {k: v for k, v in processor.to_dict().items() if k not in ("processor_class", "_processor_class")}
+    cfg["__class__"] = type(processor).__name__
+    return hashlib.sha1(json.dumps(cfg, sort_keys=True, default=str).encode()).hexdigest()[:10]
+
+
+def cache_enabled() -> bool:
+    return os.environ.get("VISION_DROP_CACHE", "1") != "0"
 
 
 def set_seed(seed: int = SEED):
@@ -68,6 +80,7 @@ def get_num_classes(dataset_dir: Path) -> int:
 # Shared caching logic for all dataset formats
 class CachedDatasetMixin:
     def setup_cache(self, cache_dir: Path, num_samples: int, use_cache: bool):
+        use_cache = use_cache and cache_enabled()
         self.cache_dir = cache_dir
         self.num_samples_cache = num_samples
         self.use_cache = use_cache
@@ -125,7 +138,8 @@ class VisionDatasetH5(CachedDatasetMixin, Dataset):
         # Determine actual processor output size for cache directory
         dummy = Image.new("RGB", (64, 64))
         dummy_out = processor(images=dummy, return_tensors="pt")["pixel_values"]
-        cache_suffix = f"_{dummy_out.shape[2]}"
+        cache_suffix = f"_{dummy_out.shape[2]}_{processor_fingerprint(processor)}"
+        self._h5 = None
 
         with h5py.File(self.h5_path, "r") as f:
             self.variable_size = isinstance(f["images"], h5py.Group)
@@ -137,6 +151,13 @@ class VisionDatasetH5(CachedDatasetMixin, Dataset):
                 self.image_shape = f["images"].shape[1:]
 
         self.setup_cache(self.h5_path.parent / f"tensor_{split}_imgs{cache_suffix}", self.num_samples, use_cache)
+        self._images = None
+        self._labels = None
+        if not self.use_cache:
+            with h5py.File(self.h5_path, "r") as f:
+                self._labels = f["labels"][:]
+                if not self.variable_size:
+                    self._images = f["images"][:]
 
     def build_cache(self):
         self.cache_dir.mkdir(parents=True, exist_ok=True)
@@ -179,12 +200,17 @@ class VisionDatasetH5(CachedDatasetMixin, Dataset):
         cached = self.load_cached(idx)
         if cached is not None:
             return cached
-        with h5py.File(self.h5_path, "r") as f:
+        if self._images is not None:
+            img, lbl = self._images[idx], self._labels[idx]
+        else:
+            if self._h5 is None:
+                self._h5 = h5py.File(self.h5_path, "r")
+            f = self._h5
             if self.variable_size:
                 img = f["images"][str(idx)][:]
             else:
                 img = f["images"][idx]
-            lbl = f["labels"][idx]
+            lbl = self._labels[idx] if self._labels is not None else f["labels"][idx]
         inputs = self.processor(images=Image.fromarray(img), return_tensors="pt")
         result = {"pixel_values": inputs["pixel_values"].squeeze(0),
                   "labels": torch.tensor(int(lbl), dtype=torch.long)}
@@ -212,7 +238,7 @@ class VisionDatasetJSON(CachedDatasetMixin, Dataset):
             self.data = all_data
 
         self.num_samples = len(self.data)
-        self.setup_cache(self.dataset_dir / f"tensor_{split}_imgs", self.num_samples, use_cache)
+        self.setup_cache(self.dataset_dir / f"tensor_{split}_imgs_{processor_fingerprint(processor)}", self.num_samples, use_cache)
 
     def build_cache(self):
         self.cache_dir.mkdir(parents=True, exist_ok=True)
@@ -257,6 +283,7 @@ def create_dataloader(dataset_name: str, base_dir: str, processor, batch_size: i
                       seed: int = SEED) -> DataLoader:
     dataset_dir = Path(base_dir) / dataset_name
     fmt = detect_format(dataset_dir)
+    use_cache = use_cache and cache_enabled()
 
     if fmt == "h5":
         path = resolve_path(dataset_dir, split, fmt)

@@ -1,6 +1,6 @@
 
                 RESULTS
-                Model: ./dinov3_vit_model
+                Model: /home/cachefix/work/task7/dinov3_vit_model
                 Dataset: ZooScan20
                 Dataset classes: 20
                 Model classes: 20
@@ -8,9 +8,9 @@
                 Pruning method: layer_drop_attn
                 Layers dropped: 2
                 Total samples: 1900
-                Accuracy: 0.7126 (71.26%)
-                Precision: 0.7589
-                Recall: 0.6214
-                F1 Score: 0.6388
+                Accuracy: 0.7663 (76.63%)
+                Precision: 0.7869
+                Recall: 0.6876
+                F1 Score: 0.6990
                 ================================================================================
                 

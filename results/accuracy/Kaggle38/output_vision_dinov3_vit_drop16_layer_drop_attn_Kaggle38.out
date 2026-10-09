@@ -1,6 +1,6 @@
 
                 RESULTS
-                Model: ./dinov3_vit_model
+                Model: /home/cachefix/work/task8/dinov3_vit_model
                 Dataset: Kaggle38
                 Dataset classes: 38
                 Model classes: 38
@@ -8,9 +8,9 @@
                 Pruning method: layer_drop_attn
                 Layers dropped: 16
                 Total samples: 2880
-                Accuracy: 0.1448 (14.48%)
-                Precision: 0.0159
-                Recall: 0.0269
-                F1 Score: 0.0078
+                Accuracy: 0.1451 (14.51%)
+                Precision: 0.0170
+                Recall: 0.0271
+                F1 Score: 0.0080
                 ================================================================================
                 

@@ -1,6 +1,6 @@
 
                 RESULTS
-                Model: ./vit_model
+                Model: /home/cachefix/work/task0/vit_model
                 Dataset: CrossD
                 Dataset classes: 44
                 Model classes: 1000
@@ -8,9 +8,9 @@
                 Pruning method: layer_drop_attn
                 Layers dropped: 8
                 Total samples: 68100
-                Accuracy: 0.1244 (12.44%)
-                Precision: 0.1107
-                Recall: 0.1333
-                F1 Score: 0.0537
+                Accuracy: 0.1769 (17.69%)
+                Precision: 0.1224
+                Recall: 0.1681
+                F1 Score: 0.0993
                 ================================================================================
                 
